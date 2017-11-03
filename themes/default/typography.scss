@@ -1,0 +1,35 @@
+@media (min-width: 414px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+h1, h2, h3 {
+  font-family: $font-family-brand;
+}
+
+.color-primary-yellow {
+  color: $primary-yellow-color;
+}
+
+.color-primary-green {
+  color: $primary-green-color;
+}
+
+.color-secondary-green {
+  color: $secondary-green-color;
+}
+
+.color-secondary-blue {
+  color: $secondary-blue-color;
+}
+
+.color-secondary-red {
+  color: $secondary-red-color;
+}

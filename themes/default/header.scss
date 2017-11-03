@@ -1,0 +1,127 @@
+.header.container {
+  color: white;
+  text-align: center;
+  padding: 0!important;
+  height: 100%;
+  background: $background-color;
+  position: relative;
+
+  &.single {
+    min-height: $page-height;
+    display: table !important;
+
+    .slide {
+      display: table-cell;
+      vertical-align: middle;
+      height: 100%!important;
+      width: 100%!important;
+    }
+  }
+
+  .slider {
+    visibility: visible !important;
+
+    .slider-frame {
+      min-height: $page-height;
+
+      @media screen and (orientation: landscape) and (max-height: 639px) {
+        min-height: 640px;
+      }
+
+      .slider-list {
+        height: 100%!important;
+        width: 100%!important;
+
+        .slider-slide {
+          min-height: $page-height !important;
+          display: table !important;
+          width: 100%!important;
+
+          @media screen and (orientation: landscape) and (max-height: 639px) {
+            min-height: 640px!important;
+          }
+
+          &:first-child {
+            z-index: 1;
+          }
+
+          > .slide {
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%!important;
+            width: 100%!important;
+          }
+        }
+      }
+    }
+
+    > div {
+      & > button {
+        display: none;
+      }
+    }
+
+    > div:last-of-type {
+      width: 100%;
+      left: 0 !important;
+      transform: initial !important;
+      -webkit-transform: initial !important;
+      background: $black-color;
+
+      & > ul {
+        top: 0!important;
+        padding-left: 0;
+
+        li {
+          margin: 0;
+          display: inline-block!important;
+          padding: 1em .75em .75em;
+          font-size: .9em;
+
+          button {
+            font-size: .9em !important;
+            font-family: $font-family-brand;
+            color: $black-color;
+            text-shadow: 2px 2px $black-color;
+            position: relative;
+            width: 140px;
+            padding: 0!important;
+            text-align: left;
+
+            &:before, &:after {
+              position: relative;
+              z-index: 2;
+              display: inline-block;
+            }
+
+            &:before {
+              color: $primary-yellow-color;
+              margin-right: -4px;
+              font-size: .9em;
+              font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+              padding: 5px 6px;
+              background: $background-color;
+              border-radius: 3px;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+              box-shadow: 0 0 1px #000;
+              display: inline-block;
+            }
+
+            &:after {
+              color: $secondary-blue-color;
+              margin-left: .25em;
+              display: block;
+              opacity: .9;
+              margin-top: 1px;
+            }
+          }
+
+          &:first-child, &:first-child button {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}

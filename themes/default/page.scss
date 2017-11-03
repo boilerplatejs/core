@@ -1,0 +1,13 @@
+.page {
+  margin: 0 auto;
+  padding-top: 40px;
+  background: #f8f8f8;
+  min-width: 320px;
+  position: relative;
+  background: $background-color;
+  min-height: $page-height;
+
+  @media (min-width: 1200px) {
+    max-width: $page-max-width;
+  }
+}

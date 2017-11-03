@@ -1,0 +1,123 @@
+nav :global(.fa) {
+  font-size: 2em;
+  line-height: 20px;
+}
+
+nav {
+  width: 100%;
+  opacity: .95;
+  box-shadow: 0 0 .5em $background-color;
+
+  @media (min-width: 1200px) {
+    max-width: $page-max-width;
+  }
+}
+
+.navbar {
+  min-height: 40px;
+}
+
+.navbar > .container .navbar-brand {
+  position: absolute;
+  left: 0;
+  height: 40px;
+  padding: 0 20px;
+  margin: 0;
+  > header {
+    position: absolute;
+    color: #fba919;
+    left: 42px;
+    top: 0;
+    line-height: 40px;
+    display: inline-block;
+    min-width: 89vw;
+    font-family: $font-family-brand;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand > header {
+    display: none;
+  }
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #c0c0c0;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+  color: #fba919;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fba919;
+  background-color: transparent;
+}
+
+.navbar-default {
+  background: $background-color;
+  border: none;
+  .navbar-toggle {
+    position: absolute;
+    margin: 0;
+    top: 3px;
+    right: 3px;
+    border-color: transparent;
+    border-radius: 0;
+    visibility: hidden;
+    &:hover, &:focus {
+      background-color: #151515;
+    }
+    .icon-bar {
+      background-color: #c0c0c0;
+    }
+  }
+  .navbar-text {
+    line-height: 40px;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+.navbar-collapse {
+  border: none;
+  //visibility: hidden;
+  .navbar-nav {
+    margin: 40px -35px 0;
+    padding: 0 1em;
+    text-align: right;
+  }
+}
+
+.navbar-brand .brand {
+  position: absolute;
+  $size: 40px;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  background-size: 80%;
+  margin: 0 10px 0 4px;
+  opacity: 1;
+
+  img {
+    margin: 10% 0;
+    width: 85%;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .navbar-collapse {
+    .navbar-nav {
+      margin: 0;
+    }
+  }
+}
