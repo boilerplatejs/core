@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { asyncConnect } from 'redux-async-connect';
+import ReactGA from 'react-ga';
+import {bundles} from 'Config';
 import { Nav } from '@vitruvian-tech/app-studio-core/components/layout';
 import * as Auth from '@vitruvian-tech/app-studio-core/reducers/Auth';
 
@@ -37,6 +39,14 @@ export default class extends Component {
   };
 
   componentDidMount = () => this.setState({ loaded: true });
+
+  componentWillMount = () => {
+    const { ['@vitruvian-tech/app-studio-core']: { google: { analytics: ga } } } = bundles;
+
+    if (__CLIENT__ && ga.id) {
+      ReactGA.initialize(ga.id, { debug: !!ga.debug });
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {

@@ -9,7 +9,7 @@ const UPDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/UPDATE_SUCCESS';
 const UPDATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/UPDATE_FAIL';
 
 const initialState = {
-  error: null,
+  error: null
 };
 
 export default function reducer(state = initialState, action = {}) {
