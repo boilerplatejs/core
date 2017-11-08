@@ -12,6 +12,6 @@
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/vitruvian-tech)",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "react-ga": "^2.2.0"
+    "react-ga": "^2.3.5"
   }
 }
