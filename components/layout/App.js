@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { asyncConnect } from 'redux-async-connect';
 import ReactGA from 'react-ga';
-import {settings} from 'Config';
 import { Nav } from '@vitruvian-tech/app-studio-core/components/layout';
 import * as Auth from '@vitruvian-tech/app-studio-core/reducers/Auth';
 
@@ -20,12 +19,24 @@ import * as Auth from '@vitruvian-tech/app-studio-core/reducers/Auth';
   }
 }])
 
-@connect(state => ({user: state['@vitruvian-tech/app-studio-core'].Auth.user}), {logout: Auth.logout, pushState: push})
+@connect(state => {
+  const AppStudioCore = state['@vitruvian-tech/app-studio-core'];
+
+  return {
+    user: AppStudioCore.Auth.user,
+    settings: AppStudioCore.Config.settings
+  };
+}, {
+  logout: Auth.logout,
+  pushState: push
+})
 
 export default class extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
+    settings: PropTypes.object,
+    load: PropTypes.func,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
@@ -41,7 +52,7 @@ export default class extends Component {
   componentDidMount = () => this.setState({ loaded: true });
 
   componentWillMount = () => {
-    const { ['@vitruvian-tech/app-studio-core']: { google: { analytics: ga } } } = settings;
+    const { ['@vitruvian-tech/app-studio-core']: { google: { analytics: ga } } } = this.props.settings;
 
     if (__CLIENT__ && ga.id) {
       ReactGA.initialize(ga.id, { debug: !!ga.debug });
