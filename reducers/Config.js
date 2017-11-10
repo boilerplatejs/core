@@ -1,10 +1,8 @@
-import config from '../../../../config';
-
 const LOAD = '@vitruvian-tech/app-studio-core/Config/LOAD';
 const LOAD_SUCCESS = '@vitruvian-tech/app-studio-core/Config/LOAD_SUCCESS';
 const LOAD_FAIL = '@vitruvian-tech/app-studio-core/Config/LOAD_FAIL';
 
-export default function reducer(state = config, action = {}) {
+export default function reducer(state = { settings: {} }, action = {}) {
   switch (action.type) {
     case LOAD:
       return state;
