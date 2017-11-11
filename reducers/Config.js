@@ -5,7 +5,11 @@ const LOAD_FAIL = '@vitruvian-tech/app-studio-core/Config/LOAD_FAIL';
 export default function reducer(state = { settings: {} }, action = {}) {
   switch (action.type) {
     case LOAD_SUCCESS:
-      return Object.assign(state, action.result);
+      if (action.result.settings) {
+        return Object.assign(state, { settings: Object.assign(state.settings, action.result.settings) });
+      } else {
+        return Object.assign(state, action.result);
+      }
     case LOAD_FAIL:
       return typeof action.error === 'string' ? {
         ...state,

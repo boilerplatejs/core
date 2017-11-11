@@ -17,7 +17,7 @@ export const api = async((req, params, resolve, reject) => {
     if (req.headers.host.split(':')[0].toLowerCase() === 'localhost') {
         resolve(config.settings[req.query.bundle].api || {});
     } else {
-        const error = new Error('Unauthorized.');
+        const error = new Error('Unauthorized');
         error.status = 403;
         reject(error);
     }
