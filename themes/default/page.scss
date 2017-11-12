@@ -10,4 +10,8 @@
   @media (min-width: 1200px) {
     max-width: $page-max-width;
   }
+
+  @media (min-width: 1400px) {
+    min-height: $page-height-xl;
+  }
 }

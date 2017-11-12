@@ -10,6 +10,10 @@
     min-height: $page-height;
     display: table !important;
 
+    @media (min-width: 1400px) {
+      min-height: $page-height-xl;
+    }
+
     .slide {
       display: table-cell;
       vertical-align: middle;
@@ -23,6 +27,10 @@
 
     .slider-frame {
       min-height: $page-height;
+
+      @media (min-width: 1400px) {
+        min-height: $page-height-xl;
+      }
 
       @media screen and (orientation: landscape) and (max-height: 639px) {
         min-height: 640px;

@@ -2,6 +2,10 @@
   min-height: $page-height;
   background: #f8f8f8;
 
+  @media (min-width: 1400px) {
+    min-height: $page-height-xl;
+  }
+
   .header.container + & {
     min-height: 0;
   }
