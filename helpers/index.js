@@ -1,5 +1,5 @@
-require('babel-polyfill');
+export * as sequelize from './sequelize';
 
 export Validator from './Validator';
-export Promise from './Promise';
 export GoogleAnalytics from './GoogleAnalytics';
+export Promise from './Promise';
