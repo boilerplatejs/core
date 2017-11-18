@@ -11,14 +11,9 @@ import * as Config from '@vitruvian-tech/app-studio-core/reducers/Config';
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
     const state = getState();
-    const AppStudioCoreConfig = state['@vitruvian-tech/app-studio-core'].Config;
     const promises = [];
 
-    if (!AppStudioCoreConfig.environment) {
-      promises.push(dispatch(Config.environment()));
-    }
-
-    if (!AppStudioCoreConfig.settings['@vitruvian-tech/app-studio-core']) {
+    if (!state['@vitruvian-tech/app-studio-core'].Config.settings['@vitruvian-tech/app-studio-core']) {
       promises.push(dispatch(Config.components('@vitruvian-tech/app-studio-core')));
     }
 

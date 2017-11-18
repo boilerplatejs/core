@@ -34,15 +34,6 @@ export function layout() {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: client => client
       .get(`/@vitruvian-tech/app-studio-core/Config/layout`)
-      .then(layout => ({ layout }))
-  };
-}
-
-export function environment() {
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client
-      .get(`/@vitruvian-tech/app-studio-core/Config/environment`)
-      .then(environment => ({ environment }))
+      .then(({ app, pages }) => ({ layout: { app, pages } }))
   };
 }
