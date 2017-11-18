@@ -13,7 +13,7 @@ import * as Config from '@vitruvian-tech/app-studio-core/reducers/Config';
     const state = getState();
     const promises = [];
 
-    if (!state['@vitruvian-tech/app-studio-core'].Config.settings['@vitruvian-tech/app-studio-core']) {
+    if (!state['@vitruvian-tech/app-studio-core'].Config['@vitruvian-tech/app-studio-core']) {
       promises.push(dispatch(Config.components('@vitruvian-tech/app-studio-core')));
     }
 
@@ -26,11 +26,11 @@ import * as Config from '@vitruvian-tech/app-studio-core/reducers/Config';
 }])
 
 @connect(state => {
-  const AppStudioCore = state['@vitruvian-tech/app-studio-core'];
+  const core = state['@vitruvian-tech/app-studio-core'];
 
   return {
-    user: AppStudioCore.Auth.user,
-    settings: AppStudioCore.Config.settings['@vitruvian-tech/app-studio-core'].components
+    user: core.Auth.user,
+    settings: core.Config['@vitruvian-tech/app-studio-core']
   };
 }, {
   logout: Auth.logout,

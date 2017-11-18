@@ -7,7 +7,7 @@ const initialState = {
   params: {}
 };
 
-export default function reducer(state = initialState, action = {}) {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE:
       return state;

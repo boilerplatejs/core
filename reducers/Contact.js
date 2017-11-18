@@ -1,9 +1,11 @@
 const CREATE = '@vitruvian-tech/app-studio-core/Contact/CREATE';
 const CREATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/CREATE_SUCCESS';
 const CREATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/CREATE_FAIL';
+
 const VALIDATE = '@vitruvian-tech/app-studio-core/Contact/VALIDATE';
 const VALIDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/VALIDATE_SUCCESS';
 const VALIDATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/VALIDATE_FAIL';
+
 const UPDATE = '@vitruvian-tech/app-studio-core/Contact/UPDATE';
 const UPDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/UPDATE_SUCCESS';
 const UPDATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/UPDATE_FAIL';
@@ -12,7 +14,7 @@ const initialState = {
   error: null
 };
 
-export default function reducer(state = initialState, action = {}) {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CREATE:
       return state;

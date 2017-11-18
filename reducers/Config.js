@@ -2,14 +2,10 @@ const LOAD = '@vitruvian-tech/app-studio-core/Config/LOAD';
 const LOAD_SUCCESS = '@vitruvian-tech/app-studio-core/Config/LOAD_SUCCESS';
 const LOAD_FAIL = '@vitruvian-tech/app-studio-core/Config/LOAD_FAIL';
 
-export default function reducer(state = { settings: {} }, action = {}) {
+export default (state = {}, action = {}) => {
   switch (action.type) {
     case LOAD_SUCCESS:
-      if (action.result.settings) {
-        return Object.assign(state, { settings: Object.assign(state.settings, action.result.settings) });
-      } else {
-        return Object.assign(state, action.result);
-      }
+      return Object.assign(state, action.result);
     case LOAD_FAIL:
       return typeof action.error === 'string' ? {
         ...state,
@@ -23,17 +19,14 @@ export default function reducer(state = { settings: {} }, action = {}) {
 export function components(bundle) {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client
-      .get(`/@vitruvian-tech/app-studio-core/Config/components?bundle=${bundle}`)
-      .then(components => ({ settings: { [bundle]: { components } } }))
+    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/components?bundle=${bundle}`)
+      .then(components => ({ [bundle]: components }))
   };
 }
 
 export function layout() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client
-      .get(`/@vitruvian-tech/app-studio-core/Config/layout`)
-      .then(({ app, pages }) => ({ layout: { app, pages } }))
+    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/layout`)
   };
 }

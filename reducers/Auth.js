@@ -1,9 +1,11 @@
 const LOAD = '@vitruvian-tech/app-studio-core/Auth/LOAD';
 const LOAD_SUCCESS = '@vitruvian-tech/app-studio-core/Auth/LOAD_SUCCESS';
 const LOAD_FAIL = '@vitruvian-tech/app-studio-core/Auth/LOAD_FAIL';
+
 const LOGIN = '@vitruvian-tech/app-studio-core/Auth/LOGIN';
 const LOGIN_SUCCESS = '@vitruvian-tech/app-studio-core/Auth/LOGIN_SUCCESS';
 const LOGIN_FAIL = '@vitruvian-tech/app-studio-core/Auth/LOGIN_FAIL';
+
 const LOGOUT = '@vitruvian-tech/app-studio-core/Auth/LOGOUT';
 const LOGOUT_SUCCESS = '@vitruvian-tech/app-studio-core/Auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = '@vitruvian-tech/app-studio-core/Auth/LOGOUT_FAIL';
@@ -12,7 +14,7 @@ const initialState = {
   loaded: false
 };
 
-export default function reducer(state = initialState, action = {}) {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case LOAD:
       return {
