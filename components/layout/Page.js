@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
 import {Footer} from '@vitruvian-tech/app-studio-core/components/layout';
-import {update} from '@vitruvian-tech/app-studio-core/reducers/Location';
+import {update} from '@vitruvian-tech/app-studio-core/controllers/Location';
 
 const concat = (...args) => {
   return Array.prototype.concat.apply([], args).filter(item => !!item);

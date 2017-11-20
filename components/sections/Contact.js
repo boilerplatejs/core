@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {initialize} from 'redux-form';
 import {Section} from '@vitruvian-tech/app-studio-core/components/layout';
 import * as forms from '@vitruvian-tech/app-studio-core/components/forms';
-import {create} from '@vitruvian-tech/app-studio-core/reducers/Contact';
+import {create} from '@vitruvian-tech/app-studio-core/controllers/Contact';
 
 @connect(() => ({}), {initialize, create})
 

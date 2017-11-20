@@ -5,8 +5,8 @@ import { push } from 'react-router-redux';
 import { asyncConnect } from 'redux-async-connect';
 import ReactGA from 'react-ga';
 import { Nav } from '@vitruvian-tech/app-studio-core/components/layout';
-import * as Auth from '@vitruvian-tech/app-studio-core/reducers/Auth';
-import * as Config from '@vitruvian-tech/app-studio-core/reducers/Config';
+import * as Auth from '@vitruvian-tech/app-studio-core/controllers/Auth';
+import * as Config from '@vitruvian-tech/app-studio-core/controllers/Config';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {

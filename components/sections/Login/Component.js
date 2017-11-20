@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {Section} from '@vitruvian-tech/app-studio-core/components/layout';
-import * as Auth from '@vitruvian-tech/app-studio-core/reducers/Auth';
+import * as Auth from '@vitruvian-tech/app-studio-core/controllers/Auth';
 
 @connect(state => ({user: state['@vitruvian-tech/app-studio-core'].Auth.user}), Auth)
 

@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
 import {Page, Header, Footer} from '@vitruvian-tech/app-studio-core/components/layout';
-import {transition} from '@vitruvian-tech/app-studio-core/reducers/Transition';
+import {transition} from '@vitruvian-tech/app-studio-core/controllers/Transition';
 
 @connect(state => ({ section: state['@vitruvian-tech/app-studio-core'].Transition.section || 0 }), {transition})
 
