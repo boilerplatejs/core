@@ -1,5 +1,5 @@
 import DataTypes from 'sequelize';
-import {Model, define} from '@vitruvian-tech/app-studio-core/helpers/sequelize/Connection';
+import {Model, define} from '@vitruvian-tech/app-studio-core/helpers/Sequelize';
 
 export default define(class Settings extends Model {
   id = {
