@@ -7,5 +7,5 @@
     "uninstall": "app-studio uninstall --bundle $npm_package_name"
   },
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/vitruvian-tech)",
-  "license": "BSD-3-Clause"
+  "license": "SEE LICENSE IN LICENSE"
 }
