@@ -2,7 +2,7 @@
 
 ## Core Bundle
 
-Bundle designed for use within the App Studio platform.
+Bundle designed for use within the Machete app theming platform.
 
 ---
 

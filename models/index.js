@@ -1,1 +1,1 @@
-export * as sequelize from './sequelize';
+export * as system from './system';
