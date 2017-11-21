@@ -7,6 +7,13 @@ const initialState = {
   params: {}
 };
 
+export function update(state) {
+  return {
+    types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
+    promise: () => Promise.resolve(state)
+  };
+}
+
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE:
@@ -24,11 +31,4 @@ export default (state = initialState, action = {}) => {
     default:
       return state;
   }
-}
-
-export function update(state) {
-  return {
-    types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
-    promise: () => Promise.resolve(state)
-  };
 }

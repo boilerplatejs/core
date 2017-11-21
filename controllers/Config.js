@@ -2,6 +2,21 @@ const LOAD = '@vitruvian-tech/app-studio-core/Config/LOAD';
 const LOAD_SUCCESS = '@vitruvian-tech/app-studio-core/Config/LOAD_SUCCESS';
 const LOAD_FAIL = '@vitruvian-tech/app-studio-core/Config/LOAD_FAIL';
 
+export function components(bundle) {
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/components?bundle=${bundle}`)
+        .then(components => ({ [bundle]: components }))
+  };
+}
+
+export function layout() {
+  return {
+    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/layout`)
+  };
+}
+
 export default (state = {}, action = {}) => {
   switch (action.type) {
     case LOAD_SUCCESS:
@@ -14,19 +29,4 @@ export default (state = {}, action = {}) => {
     default:
       return state;
   }
-}
-
-export function components(bundle) {
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/components?bundle=${bundle}`)
-      .then(components => ({ [bundle]: components }))
-  };
-}
-
-export function layout() {
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: client => client.get(`/@vitruvian-tech/app-studio-core/Config/layout`)
-  };
 }

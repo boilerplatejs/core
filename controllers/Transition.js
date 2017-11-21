@@ -16,6 +16,27 @@ const initialState = {
   error: null
 };
 
+export function next(type) {
+  return {
+    types: [NEXT, NEXT_SUCCESS, NEXT_FAIL],
+    promise: () => Promise.resolve({ [type]: (index[type] || 0) + 1 })
+  };
+}
+
+export function previous(type) {
+  return {
+    types: [PREVIOUS, PREVIOUS_SUCCESS, PREVIOUS_FAIL],
+    promise: () => Promise.resolve({ [type]: Math.max(0, (index[type] || 0) - 1) })
+  };
+}
+
+export function transition(type, index) {
+  return {
+    types: [TRANSITION, TRANSITION_SUCCESS, TRANSITION_FAIL],
+    promise: () => Promise.resolve({ [type]: index })
+  };
+}
+
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case NEXT:
@@ -63,25 +84,4 @@ export default (state = initialState, action = {}) => {
     default:
       return state;
   }
-}
-
-export function next(type) {
-  return {
-    types: [NEXT, NEXT_SUCCESS, NEXT_FAIL],
-    promise: () => Promise.resolve({ [type]: (index[type] || 0) + 1 })
-  };
-}
-
-export function previous(type) {
-  return {
-    types: [PREVIOUS, PREVIOUS_SUCCESS, PREVIOUS_FAIL],
-    promise: () => Promise.resolve({ [type]: Math.max(0, (index[type] || 0) - 1) })
-  };
-}
-
-export function transition(type, index) {
-  return {
-    types: [TRANSITION, TRANSITION_SUCCESS, TRANSITION_FAIL],
-    promise: () => Promise.resolve({ [type]: index })
-  };
 }

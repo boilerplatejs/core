@@ -14,6 +14,27 @@ const initialState = {
   error: null
 };
 
+export function create(data) {
+  return {
+    types: [CREATE, CREATE_SUCCESS, CREATE_FAIL],
+    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/create', { data })
+  };
+}
+
+export function update(data) {
+  return {
+    types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
+    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/update', { data })
+  };
+}
+
+export function validate(data) {
+  return {
+    types: [VALIDATE, VALIDATE_SUCCESS, VALIDATE_FAIL],
+    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/validate', { data })
+  };
+}
+
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CREATE:
@@ -45,25 +66,4 @@ export default (state = initialState, action = {}) => {
     default:
       return state;
   }
-}
-
-export function create(data) {
-  return {
-    types: [CREATE, CREATE_SUCCESS, CREATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/create', { data })
-  };
-}
-
-export function update(data) {
-  return {
-    types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/update', { data })
-  };
-}
-
-export function validate(data) {
-  return {
-    types: [VALIDATE, VALIDATE_SUCCESS, VALIDATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/validate', { data })
-  };
 }
