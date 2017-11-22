@@ -58,7 +58,7 @@ export default class extends Component {
   componentDidMount = () => this.setState({ loaded: true });
 
   componentWillMount = () => {
-    const { google_analytics_id: id, google_analytics_debug: debug } = this.props.config;
+    const { googleAnalyticsId: id, googleAnalyticsDebug: debug } = this.props.config;
 
     if (__CLIENT__ && id) {
       ReactGA.initialize(id, { debug: !!debug });

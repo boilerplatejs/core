@@ -26,8 +26,8 @@ export default class extends Model {
      * Examples:
      *
      * static associate = function(models) {
-     *     this.belongsTo(models.ApiConfiguration); // Create an `api_configuration_id` column/foreign key
-     *     this.belongsTo(models.ComponentConfiguration); // Create a `component_configuration_id` column/foreign key
+     *     this.belongsTo(models.ApiConfiguration); // Creates an `ApiConfigurationId` column/foreign key
+     *     this.belongsTo(models.ComponentConfiguration); // Creates a `ComponentConfigurationId` column/foreign key
      * };
      *
      * static tableName = parse(__filename); // Use filename as the literal table name
