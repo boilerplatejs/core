@@ -2,8 +2,8 @@ import async from '@vitruvian-tech/app-studio-core/lib/Promise';
 import config from '../../../../config';
 
 export const layout = async((req, params, resolve, reject) => {
-    const { app, pages } = config;
-    resolve({ app, pages });
+    const { app, pages, theme } = config;
+    resolve({ app, pages, theme });
 });
 
 export const components = async((req, params, resolve, reject) => {

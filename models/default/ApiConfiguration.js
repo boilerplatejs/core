@@ -32,4 +32,4 @@ export default class extends Model {
      *
      * static tableName = parse(__filename); // Use filename as the literal table name
      */
-};
+}
