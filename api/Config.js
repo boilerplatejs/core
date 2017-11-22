@@ -1,5 +1,5 @@
 import async from '@vitruvian-tech/app-studio-core/lib/Promise';
-import config from '../../../../../config';
+import config from '../../../../config';
 
 export const layout = async((req, params, resolve, reject) => {
     const { app, pages } = config;

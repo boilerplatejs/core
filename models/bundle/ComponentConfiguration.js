@@ -15,6 +15,8 @@ export default class extends Model {
      * id = { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true };
      * name = DataTypes.STRING;
      */
+    googleAnalyticsId = DataTypes.STRING;
+    googleAnalyticsDebug = DataTypes.BOOLEAN;
 
     /**
      * Descriptors

@@ -30,7 +30,7 @@ import * as Config from '@vitruvian-tech/app-studio-core/controllers/Config';
 
   return {
     user: core.Auth.user,
-    settings: core.Config['@vitruvian-tech/app-studio-core']
+    config: core.Config['@vitruvian-tech/app-studio-core']
   };
 }, {
   logout: Auth.logout,
@@ -41,7 +41,7 @@ export default class extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
-    settings: PropTypes.object,
+    config: PropTypes.object,
     load: PropTypes.func,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
@@ -58,10 +58,10 @@ export default class extends Component {
   componentDidMount = () => this.setState({ loaded: true });
 
   componentWillMount = () => {
-    const { google: { analytics: ga } } = this.props.settings;
+    const { google_analytics_id: id, google_analytics_debug: debug } = this.props.config;
 
-    if (__CLIENT__ && ga.id) {
-      ReactGA.initialize(ga.id, { debug: !!ga.debug });
+    if (__CLIENT__ && id) {
+      ReactGA.initialize(id, { debug: !!debug });
     }
   };
 
