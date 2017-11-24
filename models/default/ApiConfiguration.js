@@ -16,7 +16,7 @@ export default class extends Model {
      *
      * id = { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true };
      * name = DataTypes.STRING;
-     */
+    */
 
     /**
      * Descriptors
@@ -31,5 +31,5 @@ export default class extends Model {
      * };
      *
      * static tableName = parse(__filename); // Use filename as the literal table name
-     */
+    */
 }
