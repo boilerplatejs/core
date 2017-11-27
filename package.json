@@ -13,5 +13,5 @@
     "downgrade": "machete migrate down --bundle $npm_package_name"
   },
   "author": "Peter C. Romano <pete@vitruvian.tech> (http://github.com/vitruvian-tech)",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "BSD-3-Clause"
 }
