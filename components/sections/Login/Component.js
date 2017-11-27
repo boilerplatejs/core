@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {Section} from '@vitruvian-tech/app-studio-core/components/layout';
-import * as Auth from '@vitruvian-tech/app-studio-core/controllers/Auth';
+import {Section} from '@machete-platform/core-bundle/components/layout';
+import * as Auth from '@machete-platform/core-bundle/controllers/Auth';
 
-@connect(state => ({user: state['@vitruvian-tech/app-studio-core'].Auth.user}), Auth)
+@connect(state => ({user: state['@machete-platform/core-bundle'].Auth.user}), Auth)
 
 export default class extends Section {
   static propTypes = {

@@ -1,4 +1,4 @@
-import async from '@vitruvian-tech/app-studio-core/lib/Promise';
+import async from '@machete-platform/core-bundle/lib/Promise';
 import config from '../../../../config';
 
 export const layout = async((req, params, resolve, reject) => {

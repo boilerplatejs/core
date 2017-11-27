@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Section} from '@vitruvian-tech/app-studio-core/components/layout';
+import {Section} from '@machete-platform/core-bundle/components/layout';
 
 export default class extends Section {
   render() {

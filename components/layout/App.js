@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { asyncConnect } from 'redux-async-connect';
 import ReactGA from 'react-ga';
-import { Nav } from '@vitruvian-tech/app-studio-core/components/layout';
-import * as Auth from '@vitruvian-tech/app-studio-core/controllers/Auth';
-import * as Config from '@vitruvian-tech/app-studio-core/controllers/Config';
+import { Nav } from '@machete-platform/core-bundle/components/layout';
+import * as Auth from '@machete-platform/core-bundle/controllers/Auth';
+import * as Config from '@machete-platform/core-bundle/controllers/Config';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
     const state = getState();
     const promises = [];
 
-    if (!state['@vitruvian-tech/app-studio-core'].Config['@vitruvian-tech/app-studio-core']) {
-      promises.push(dispatch(Config.components('@vitruvian-tech/app-studio-core')));
+    if (!state['@machete-platform/core-bundle'].Config['@machete-platform/core-bundle']) {
+      promises.push(dispatch(Config.components('@machete-platform/core-bundle')));
     }
 
     if (!Auth.isLoaded(state)) {
@@ -26,11 +26,11 @@ import * as Config from '@vitruvian-tech/app-studio-core/controllers/Config';
 }])
 
 @connect(state => {
-  const core = state['@vitruvian-tech/app-studio-core'];
+  const core = state['@machete-platform/core-bundle'];
 
   return {
     user: core.Auth.user,
-    config: core.Config['@vitruvian-tech/app-studio-core']
+    config: core.Config['@machete-platform/core-bundle']
   };
 }, {
   logout: Auth.logout,

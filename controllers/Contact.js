@@ -1,14 +1,14 @@
-const CREATE = '@vitruvian-tech/app-studio-core/Contact/CREATE';
-const CREATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/CREATE_SUCCESS';
-const CREATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/CREATE_FAIL';
+const CREATE = '@machete-platform/core-bundle/Contact/CREATE';
+const CREATE_SUCCESS = '@machete-platform/core-bundle/Contact/CREATE_SUCCESS';
+const CREATE_FAIL = '@machete-platform/core-bundle/Contact/CREATE_FAIL';
 
-const VALIDATE = '@vitruvian-tech/app-studio-core/Contact/VALIDATE';
-const VALIDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/VALIDATE_SUCCESS';
-const VALIDATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/VALIDATE_FAIL';
+const VALIDATE = '@machete-platform/core-bundle/Contact/VALIDATE';
+const VALIDATE_SUCCESS = '@machete-platform/core-bundle/Contact/VALIDATE_SUCCESS';
+const VALIDATE_FAIL = '@machete-platform/core-bundle/Contact/VALIDATE_FAIL';
 
-const UPDATE = '@vitruvian-tech/app-studio-core/Contact/UPDATE';
-const UPDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Contact/UPDATE_SUCCESS';
-const UPDATE_FAIL = '@vitruvian-tech/app-studio-core/Contact/UPDATE_FAIL';
+const UPDATE = '@machete-platform/core-bundle/Contact/UPDATE';
+const UPDATE_SUCCESS = '@machete-platform/core-bundle/Contact/UPDATE_SUCCESS';
+const UPDATE_FAIL = '@machete-platform/core-bundle/Contact/UPDATE_FAIL';
 
 const initialState = {
   error: null
@@ -17,21 +17,21 @@ const initialState = {
 export function create(data) {
   return {
     types: [CREATE, CREATE_SUCCESS, CREATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/create', { data })
+    promise: (client) => client.post('/@machete-platform/core-bundle/Contact/create', { data })
   };
 }
 
 export function update(data) {
   return {
     types: [UPDATE, UPDATE_SUCCESS, UPDATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/update', { data })
+    promise: (client) => client.post('/@machete-platform/core-bundle/Contact/update', { data })
   };
 }
 
 export function validate(data) {
   return {
     types: [VALIDATE, VALIDATE_SUCCESS, VALIDATE_FAIL],
-    promise: (client) => client.post('/@vitruvian-tech/app-studio-core/Contact/validate', { data })
+    promise: (client) => client.post('/@machete-platform/core-bundle/Contact/validate', { data })
   };
 }
 

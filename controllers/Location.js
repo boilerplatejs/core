@@ -1,6 +1,6 @@
-const UPDATE = '@vitruvian-tech/app-studio-core/Location/UPDATE';
-const UPDATE_SUCCESS = '@vitruvian-tech/app-studio-core/Location/UPDATE_SUCCESS';
-const UPDATE_FAIL = '@vitruvian-tech/app-studio-core/Location/UPDATE_FAIL';
+const UPDATE = '@machete-platform/core-bundle/Location/UPDATE';
+const UPDATE_SUCCESS = '@machete-platform/core-bundle/Location/UPDATE_SUCCESS';
+const UPDATE_FAIL = '@machete-platform/core-bundle/Location/UPDATE_FAIL';
 
 const initialState = {
   location: '',

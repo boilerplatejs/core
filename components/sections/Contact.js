@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {initialize} from 'redux-form';
-import {Section} from '@vitruvian-tech/app-studio-core/components/layout';
-import * as forms from '@vitruvian-tech/app-studio-core/components/forms';
-import {create} from '@vitruvian-tech/app-studio-core/controllers/Contact';
+import {Section} from '@machete-platform/core-bundle/components/layout';
+import * as forms from '@machete-platform/core-bundle/components/forms';
+import {create} from '@machete-platform/core-bundle/controllers/Contact';
 
 @connect(() => ({}), {initialize, create})
 

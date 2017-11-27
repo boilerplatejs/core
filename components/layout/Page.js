@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {Footer} from '@vitruvian-tech/app-studio-core/components/layout';
-import {update} from '@vitruvian-tech/app-studio-core/controllers/Location';
+import {Footer} from '@machete-platform/core-bundle/components/layout';
+import {update} from '@machete-platform/core-bundle/controllers/Location';
 
 const concat = (...args) => {
   return Array.prototype.concat.apply([], args).filter(item => !!item);

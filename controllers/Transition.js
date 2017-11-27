@@ -1,14 +1,14 @@
-const NEXT = '@vitruvian-tech/app-studio-core/Transition/NEXT';
-const NEXT_SUCCESS = '@vitruvian-tech/app-studio-core/Transition/NEXT_SUCCESS';
-const NEXT_FAIL = '@vitruvian-tech/app-studio-core/Transition/NEXT_FAIL';
+const NEXT = '@machete-platform/core-bundle/Transition/NEXT';
+const NEXT_SUCCESS = '@machete-platform/core-bundle/Transition/NEXT_SUCCESS';
+const NEXT_FAIL = '@machete-platform/core-bundle/Transition/NEXT_FAIL';
 
-const PREVIOUS = '@vitruvian-tech/app-studio-core/Transition/PREVIOUS';
-const PREVIOUS_SUCCESS = '@vitruvian-tech/app-studio-core/Transition/PREVIOUS_SUCCESS';
-const PREVIOUS_FAIL = '@vitruvian-tech/app-studio-core/Transition/PREVIOUS_FAIL';
+const PREVIOUS = '@machete-platform/core-bundle/Transition/PREVIOUS';
+const PREVIOUS_SUCCESS = '@machete-platform/core-bundle/Transition/PREVIOUS_SUCCESS';
+const PREVIOUS_FAIL = '@machete-platform/core-bundle/Transition/PREVIOUS_FAIL';
 
-const TRANSITION = '@vitruvian-tech/app-studio-core/Transition/TRANSITION';
-const TRANSITION_SUCCESS = '@vitruvian-tech/app-studio-core/Transition/TRANSITION_SUCCESS';
-const TRANSITION_FAIL = '@vitruvian-tech/app-studio-core/Transition/TRANSITION_FAIL';
+const TRANSITION = '@machete-platform/core-bundle/Transition/TRANSITION';
+const TRANSITION_SUCCESS = '@machete-platform/core-bundle/Transition/TRANSITION_SUCCESS';
+const TRANSITION_FAIL = '@machete-platform/core-bundle/Transition/TRANSITION_FAIL';
 
 let index = {};
 

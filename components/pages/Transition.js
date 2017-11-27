@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
-import {Page, Header, Footer} from '@vitruvian-tech/app-studio-core/components/layout';
-import {transition} from '@vitruvian-tech/app-studio-core/controllers/Transition';
+import {Page, Header, Footer} from '@machete-platform/core-bundle/components/layout';
+import {transition} from '@machete-platform/core-bundle/controllers/Transition';
 
-@connect(state => ({ section: state['@vitruvian-tech/app-studio-core'].Transition.section || 0 }), {transition})
+@connect(state => ({ section: state['@machete-platform/core-bundle'].Transition.section || 0 }), {transition})
 
 export default class extends Page {
   static propTypes = {
