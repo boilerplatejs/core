@@ -1,9 +1,7 @@
 export default class {
   static async up(models, sequelize, DataTypes) {
-    return await sequelize.sync();
+    await sequelize.sync();
   }
 
-  static async down(models, sequelize, DataTypes) {
-    return await Promise.resolve();
-  }
+  static async down(models, sequelize, DataTypes) {}
 }
