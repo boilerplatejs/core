@@ -1,7 +1,6 @@
 import async from '@machete-platform/core-bundle/lib/Promise';
 import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
 import _ from 'lodash';
-import config from '../../../../config';
 
 const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts'];
 const LAYOUT_JSON_KEYS = ['headers', 'sections', 'options'];
@@ -24,14 +23,12 @@ const parse = (object, keys) => {
     return object;
 };
 
-const parsePage = page => parse(page, PAGE_JSON_KEYS);
-
-const parseLayout = layout => parse(layout, LAYOUT_JSON_KEYS);
-
 const getLayoutConfig = async () => {
+    const parsePage = page => parse(page, PAGE_JSON_KEYS);
+    const parseLayout = layout => parse(layout, LAYOUT_JSON_KEYS);
     const {Layout, MetaTag, Link, Script, Page} = getModels();
 
-    const { app, theme, title, page, headers, sections, options } = await Layout.findAll({ limit: 1, order: [['id', 'DESC']] })
+    const {app, theme, title, page, headers, sections, options} = await Layout.findAll({ limit: 1, order: [['id', 'DESC']] })
         .then(getValues)
         .then(records => records[0]);
 
@@ -58,19 +55,44 @@ const getLayoutConfig = async () => {
     return { app, theme, title, pages };
 };
 
+const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
+    const models = getModels(bundle);
+    const {Environment} = models;
+
+    return await Environment.findOne({
+        where: { name },
+        include: [{
+            model: models[configuration],
+            attributes: { exclude: ['id', 'createdAt', 'updatedAt'] }
+        }]
+    })
+        .then(environment => {
+            if (environment) {
+                return environment[configuration] || {};
+            } else {
+                throw new Error(`Environment '${name}' does not exist.`);
+            }
+        })
+        .then(configuration => configuration.dataValues || {})
+        .catch(e => {
+            console.error(e);
+            return {};
+        });
+};
+
 const cache = {};
 
 export const layout = async(async (req, params, resolve, reject) => {
     resolve((cache.layout = cache.layout || await getLayoutConfig()));
 });
 
-export const components = async((req, params, resolve, reject) => {
-    resolve(config[req.query.bundle].components || {});
+export const components = async(async (req, params, resolve, reject) => {
+    resolve(await getEnvironmentConfig(req.query.bundle, 'ComponentConfiguration'));
 });
 
-export const api = async((req, params, resolve, reject) => {
+export const api = async(async (req, params, resolve, reject) => {
     if (req.headers.host.split(':')[0].toLowerCase() === 'localhost') {
-        resolve(config[req.query.bundle].api || {});
+        resolve(await getEnvironmentConfig(req.query.bundle, 'ApiConfiguration'));
     } else {
         const error = new Error('Unauthorized');
         error.status = 403;
