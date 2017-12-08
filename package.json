@@ -1,6 +1,6 @@
 {
   "name": "@machete-platform/core-bundle",
-  "version": "1.0.0-pre.1",
+  "version": "1.0.0-pre.2",
   "description": "",
   "scripts": {
     "lint": "machete lint --bundle $(pwd)",

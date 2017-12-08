@@ -30,7 +30,7 @@ export default class extends Component {
                 <img src={require('../../../../../static/assets/images/logo.png')}
                      height="80%"
                      alt="Based in NYC, Vitruvian Technology, Corp. specializes in Web/Software Development, Marketing, Design, QA, Studio Production, Sourcing, IT/System Administration, Security, and Investigatory services."
-                     title="Sapient. Secure. Software for all."/>
+                     title="Sentient. Secure. Quality for all."/>
               </div>
             </IndexLink>
           </Navbar.Brand>
