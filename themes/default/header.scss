@@ -9,6 +9,7 @@
   &.single {
     min-height: $page-height;
     display: table !important;
+    height: 0;
 
     @media (min-width: 1400px) {
       min-height: $page-height-xl;
@@ -44,6 +45,7 @@
           min-height: $page-height !important;
           display: table !important;
           width: 100%!important;
+          height: 0 !important;
 
           @media screen and (orientation: landscape) and (max-height: 639px) {
             min-height: 640px!important;
