@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import Helmet from 'react-helmet';
 import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
 import {Page, Header, Footer} from '@machete-platform/core-bundle/components/layout';
@@ -27,7 +26,7 @@ export default class extends Page {
   };
 
   componentWillMount() {
-    const { options, transition, section } = this.props;
+    const { transition, section } = this.props;
     const { Transition = {} } = options;
     transition('section', Transition.section || section);
   }
