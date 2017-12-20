@@ -4,14 +4,15 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {Footer} from '@machete-platform/core-bundle/components/layout';
 import {update} from '@machete-platform/core-bundle/controllers/Location';
+import {transition} from '@machete-platform/core-bundle/controllers/Transition';
+import {Footer} from '@machete-platform/core-bundle/components/layout';
 
-const concat = (...args) => {
-  return Array.prototype.concat.apply([], args).filter(item => !!item);
-};
+// const concat = (...args) => {
+//   return Array.prototype.concat.apply([], args).filter(item => !!item);
+// };
 
-@connect(state => ({}), {update})
+@connect(state => ({}), {update, transition})
 
 export default class extends Component {
 
@@ -28,7 +29,8 @@ export default class extends Component {
     sections: PropTypes.array,
     options: PropTypes.object,
     update: PropTypes.func,
-    children: PropTypes.any
+    children: PropTypes.any,
+    transition: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -44,6 +46,8 @@ export default class extends Component {
     ReactGA.pageview(this.props.location.pathname);
   }
 
+  afterSlide = () => this.props.transition('slide', 0);
+
   render() {
     const { children, sections, headers, className, config, title, meta, link, script } = this.props;
     const single = headers.length === 1;
@@ -56,7 +60,7 @@ export default class extends Component {
           {headers.length ? (
             <section className={`${single ? 'single' : ''} header container`}>
               {single ? headers : (
-                <NukaCarousel initialSlideWidth={970}>
+                <NukaCarousel initialSlideWidth={970} afterSlide={this.afterSlide}>
                   {headers}
                 </NukaCarousel>
               )}
