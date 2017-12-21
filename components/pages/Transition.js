@@ -31,8 +31,6 @@ export default class extends Page {
     transition('section', Transition.section || section);
   }
 
-  afterSlide = () => this.props.transition('slide', 0);
-
   begin = () => this.setState({ animating: true });
 
   complete = () => this.setState({ animating: false });
@@ -48,7 +46,7 @@ export default class extends Page {
           {headers.length ? (
             <section className={`${single ? 'single' : ''} header container`}>
               {single ? headers : (
-                <NukaCarousel initialSlideWidth={970} afterSlide={this.afterSlide}>
+                <NukaCarousel initialSlideWidth={970}>
                   {headers}
                 </NukaCarousel>
               )}
