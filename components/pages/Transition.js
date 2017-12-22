@@ -36,7 +36,7 @@ export default class extends Page {
     transition('header', 0);
   }
 
-  afterSlide = async index => await this.props.transition('header', index);
+  afterSlide = index => this.props.transition('header', index);
 
   begin = () => this.setState({ animating: true });
 

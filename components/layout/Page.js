@@ -48,7 +48,7 @@ export default class extends Component {
     ReactGA.pageview(this.props.location.pathname);
   }
 
-  afterSlide = async index => await this.props.transition('header', index);
+  afterSlide = index => this.props.transition('header', index);
 
   render() {
     const { children, sections, headers, className, config, title, meta, link, script, header } = this.props;

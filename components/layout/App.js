@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
-import { asyncConnect } from 'redux-async-connect';
+import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
+import {asyncConnect} from 'redux-async-connect';
 import ReactGA from 'react-ga';
-import { Nav } from '@machete-platform/core-bundle/components/layout';
-import * as Auth from '@machete-platform/core-bundle/controllers/Auth';
+import {Nav} from '@machete-platform/core-bundle/components/layout';
 import * as Config from '@machete-platform/core-bundle/controllers/Config';
 
 @asyncConnect([{
@@ -17,34 +15,17 @@ import * as Config from '@machete-platform/core-bundle/controllers/Config';
       promises.push(dispatch(Config.components('@machete-platform/core-bundle')));
     }
 
-    if (!Auth.isLoaded(state)) {
-      promises.push(dispatch(Auth.load()));
-    }
-
     return Promise.all(promises);
   }
 }])
 
-@connect(state => {
-  const core = state['@machete-platform/core-bundle'];
-
-  return {
-    user: core.Auth.user,
-    config: core.Config['@machete-platform/core-bundle']
-  };
-}, {
-  logout: Auth.logout,
-  pushState: push
-})
+@connect(state => ({ config: state['@machete-platform/core-bundle'].Config['@machete-platform/core-bundle'] }))
 
 export default class extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
-    user: PropTypes.object,
     config: PropTypes.object,
-    load: PropTypes.func,
-    logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    nav: PropTypes.object
   };
 
   static contextTypes = {
@@ -65,22 +46,12 @@ export default class extends Component {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
-      // login
-      this.props.pushState('/dashboard');
-    } else if (this.props.user && !nextProps.user) {
-      // logout
-      this.props.pushState('/');
-    }
-  }
-
   render() {
-    const { children: page } = this.props;
+    const { children: page, nav } = this.props;
 
     return (
       <div className={`${this.state.loaded ? '' : 'no-js'}`}>
-        <Nav {...this.props} />
+        {nav || <Nav/>}
         {page}
       </div>
     );
