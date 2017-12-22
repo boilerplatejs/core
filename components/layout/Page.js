@@ -4,14 +4,15 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {update} from '@machete-platform/core-bundle/controllers/Location';
+import {update} from '@machete-platform/core-bundle/controllers/Router';
+import {transition} from '@machete-platform/core-bundle/controllers/Transition';
 import {Footer} from '@machete-platform/core-bundle/components/layout';
 
 // const concat = (...args) => {
 //   return Array.prototype.concat.apply([], args).filter(item => !!item);
 // };
 
-@connect(state => ({}), {update})
+@connect(state => ({ header: state['@machete-platform/core-bundle'].Transition.header || 0 }), {update, transition})
 
 export default class extends Component {
 
@@ -28,7 +29,9 @@ export default class extends Component {
     sections: PropTypes.array,
     options: PropTypes.object,
     update: PropTypes.func,
-    children: PropTypes.any
+    children: PropTypes.any,
+    header: PropTypes.number.isRequired,
+    transition: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -36,16 +39,19 @@ export default class extends Component {
   };
 
   componentWillMount() {
-    const { update, location, params } = this.props;
+    const { update, location, params, transition } = this.props;
     update({ location, params });
+    transition('header', 0);
   }
 
   componentDidMount() {
     ReactGA.pageview(this.props.location.pathname);
   }
 
+  afterSlide = async index => await this.props.transition('header', index);
+
   render() {
-    const { children, sections, headers, className, config, title, meta, link, script } = this.props;
+    const { children, sections, headers, className, config, title, meta, link, script, header } = this.props;
     const single = headers.length === 1;
 
     return (
@@ -56,7 +62,7 @@ export default class extends Component {
           {headers.length ? (
             <section className={`${single ? 'single' : ''} header container`}>
               {single ? headers : (
-                <NukaCarousel initialSlideWidth={970}>
+                <NukaCarousel initialSlideWidth={970} afterSlide={this.afterSlide} slideIndex={header}>
                   {headers}
                 </NukaCarousel>
               )}

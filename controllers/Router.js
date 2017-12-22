@@ -1,10 +1,11 @@
-const UPDATE = '@machete-platform/core-bundle/Location/UPDATE';
-const UPDATE_SUCCESS = '@machete-platform/core-bundle/Location/UPDATE_SUCCESS';
-const UPDATE_FAIL = '@machete-platform/core-bundle/Location/UPDATE_FAIL';
+const UPDATE = '@machete-platform/core-bundle/Router/UPDATE';
+const UPDATE_SUCCESS = '@machete-platform/core-bundle/Router/UPDATE_SUCCESS';
+const UPDATE_FAIL = '@machete-platform/core-bundle/Router/UPDATE_FAIL';
 
 const initialState = {
-  location: '',
-  params: {}
+  location: {},
+  params: {},
+  error: null
 };
 
 export function update(state) {
@@ -19,10 +20,7 @@ export default (state = initialState, action = {}) => {
     case UPDATE:
       return state;
     case UPDATE_SUCCESS:
-      return {
-        ...action.result,
-        error: null,
-      };
+      return { ...action.result, error: null };
     case UPDATE_FAIL:
       return typeof action.error === 'string' ? {
         ...state,

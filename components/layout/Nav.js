@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
 import {IndexLink} from 'react-router';
 import Navbar from 'react-bootstrap/lib/Navbar';
-// import Nav from 'react-bootstrap/lib/Nav';
+import {transition} from '@machete-platform/core-bundle/controllers/Transition';
 // import NavItem from 'react-bootstrap/lib/NavItem';
-// import { LinkContainer } from 'react-router-bootstrap';
+// import Nav from 'react-bootstrap/lib/Nav';
+// import {LinkContainer} from 'react-router-bootstrap';
+
+@connect(state => ({}), {transition})
 
 export default class extends Component {
   static propTypes = {
     user: PropTypes.object,
+    transition: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
   };
 
@@ -17,15 +22,18 @@ export default class extends Component {
     this.props.logout();
   };
 
-  reload = () => window.location = '/';
-
   render() {
     // const { user } = this.props;
+    const { transition } = this.props;
+
     return (
       <Navbar className="container" fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
-            <IndexLink to="/">
+            <IndexLink to="/" onClick={async () => {
+              await transition('header', 0);
+              await transition('slide', 0);
+            }}>
               <div className="brand">
                 <img src={require('../../../../../static/assets/images/logo.png')}
                      height="80%"
