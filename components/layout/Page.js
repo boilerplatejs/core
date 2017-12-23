@@ -41,14 +41,14 @@ export default class extends Component {
   componentWillMount() {
     const { update, location, params, transition } = this.props;
     update({ location, params });
-    transition('header', 0);
+    transition({ header: 0 });
   }
 
   componentDidMount() {
     ReactGA.pageview(this.props.location.pathname);
   }
 
-  afterSlide = index => this.props.transition('header', index);
+  afterSlide = header => this.props.transition({ header });
 
   render() {
     const { children, sections, headers, className, config, title, meta, link, script, header } = this.props;

@@ -30,10 +30,12 @@ export function previous(type) {
   };
 }
 
-export function transition(type, index) {
+export function transition(type, i) {
+  const result = arguments.length === 1 ? type : { [type]: i };
+
   return {
     types: [TRANSITION, TRANSITION_SUCCESS, TRANSITION_FAIL],
-    promise: () => Promise.resolve({ [type]: index })
+    promise: () => Promise.resolve(result)
   };
 }
 
@@ -42,9 +44,8 @@ export default (state = initialState, action = {}) => {
     case NEXT:
       return state;
     case NEXT_SUCCESS:
-      index = Object.assign(index, action.result);
       return {
-        ...index,
+        ...Object.assign(index, action.result),
         error: null,
       };
     case NEXT_FAIL:
@@ -56,9 +57,8 @@ export default (state = initialState, action = {}) => {
     case PREVIOUS:
       return state;
     case PREVIOUS_SUCCESS:
-      index = Object.assign(index, action.result);
       return {
-        ...index,
+        ...Object.assign(index, action.result),
         error: null,
       };
     case PREVIOUS_FAIL:
@@ -70,9 +70,8 @@ export default (state = initialState, action = {}) => {
     case TRANSITION:
       return state;
     case TRANSITION_SUCCESS:
-      index = Object.assign(index, action.result);
       return {
-        ...index,
+        ...Object.assign(index, action.result),
         error: null,
       };
     case TRANSITION_FAIL:

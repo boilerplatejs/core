@@ -33,10 +33,10 @@ export default class extends Page {
     const { transition, section, options } = this.props;
     const { Transition = {} } = options;
     transition('section', Transition.section || section);
-    transition('header', 0);
+    transition({ header: 0 });
   }
 
-  afterSlide = index => this.props.transition('header', index);
+  afterSlide = header => this.props.transition({ header });
 
   begin = () => this.setState({ animating: true });
 
