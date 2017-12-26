@@ -10,6 +10,7 @@
     min-height: $page-height;
     display: table !important;
     height: 0;
+    width: 100%;
 
     @media (min-width: 1400px) {
       min-height: $page-height-xl;
