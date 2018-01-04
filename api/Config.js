@@ -2,7 +2,7 @@ import async from '@machete-platform/core-bundle/lib/Promise';
 import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
 import _ from 'lodash';
 
-const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts'];
+const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts', 'options'];
 const LAYOUT_JSON_KEYS = ['headers', 'sections', 'options'];
 
 const getValues = records => records.map(record => record.dataValues);

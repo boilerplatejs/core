@@ -29,13 +29,6 @@ export default class extends Page {
     animating: false
   };
 
-  componentWillMount() {
-    const { transition, section, options } = this.props;
-    const { Transition = {} } = options;
-    transition('section', Transition.section || section);
-    transition({ header: 0 });
-  }
-
   afterSlide = header => this.props.transition({ header });
 
   begin = () => this.setState({ animating: true });
@@ -49,21 +42,21 @@ export default class extends Page {
 
     return (
       <Page className={`${className} ${animating ? `${classNames.animating || ''} animating` : ''}`} {...this.props}>
-        <VelocityTransitionGroup enter={{ easing: [ 0.17, 0.67, 0.83, 0.67 ], animation: 'transition.fadeIn', duration: 750, begin: this.begin, complete: this.complete }}>
-          {headers.length ? (
-            <section className={`${single ? 'single' : ''} header container`}>
-              {single ? headers : (
-                <NukaCarousel initialSlideWidth={970} afterSlide={this.afterSlide} slideIndex={header}>
-                  {headers}
-                </NukaCarousel>
-              )}
-            </section>
-          ) : <span/>}
-          <section className="section container">
-            {sections[section]}
+        {headers.length ? (
+          <section className={`${single ? 'single' : ''} header container`}>
+            {single ? headers : (
+              <NukaCarousel initialSlideWidth={970} afterSlide={this.afterSlide} slideIndex={header}>
+                {headers}
+              </NukaCarousel>
+            )}
           </section>
-          <Footer/>
-        </VelocityTransitionGroup>
+        ) : <span/>}
+        <section className="section container">
+          <VelocityTransitionGroup enter={{ easing: [ 0.17, 0.67, 0.83, 0.67 ], animation: 'transition.fadeIn', duration: 750, begin: this.begin, complete: this.complete }}>
+            {sections[section]}
+          </VelocityTransitionGroup>
+        </section>
+        <Footer/>
       </Page>
     );
   }
