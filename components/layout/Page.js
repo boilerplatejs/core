@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {update} from '@machete-platform/core-bundle/controllers/Router';
 import {transition} from '@machete-platform/core-bundle/controllers/Transition';
 import {Footer} from '@machete-platform/core-bundle/components/layout';
 
@@ -12,7 +11,7 @@ import {Footer} from '@machete-platform/core-bundle/components/layout';
 //   return Array.prototype.concat.apply([], args).filter(item => !!item);
 // };
 
-@connect(state => ({ header: state['@machete-platform/core-bundle'].Transition.header || 0 }), {update, transition})
+@connect(state => ({ header: state['@machete-platform/core-bundle'].Transition.header || 0 }), {transition})
 
 export default class extends Component {
 
@@ -28,7 +27,6 @@ export default class extends Component {
     headers: PropTypes.any,
     sections: PropTypes.array,
     options: PropTypes.object,
-    update: PropTypes.func,
     children: PropTypes.any,
     header: PropTypes.number.isRequired,
     transition: PropTypes.func.isRequired
@@ -37,12 +35,6 @@ export default class extends Component {
   static defaultProps = {
     className: ''
   };
-
-  componentWillMount() {
-    const { update, location, params, transition } = this.props;
-    update({ location, params });
-    transition({ header: 0 });
-  }
 
   componentDidMount() {
     ReactGA.pageview(this.props.location.pathname);
