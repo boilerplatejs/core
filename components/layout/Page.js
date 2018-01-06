@@ -38,6 +38,10 @@ export default class extends Component {
 
   componentDidMount() {
     ReactGA.pageview(this.props.location.pathname);
+
+    if (global.scrollTo) {
+      global.scrollTo(0, 0);
+    }
   }
 
   afterSlide = header => this.props.transition({ header });
