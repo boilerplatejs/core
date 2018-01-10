@@ -52,6 +52,8 @@ export default class extends Component {
 
     return (
       <div className={`${this.state.loaded ? '' : 'no-js'}`}>
+        {nav || <Nav/>}
+        {page}
         {googleAnalyticsId && <span>
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
           <script dangerouslySetInnerHTML={{__html: `
@@ -60,8 +62,6 @@ export default class extends Component {
             gtag('js', new Date());
             gtag('config', '${googleAnalyticsId}');`}} />
         </span>}
-        {nav || <Nav/>}
-        {page}
       </div>
     );
   }
