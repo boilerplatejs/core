@@ -47,10 +47,19 @@ export default class extends Component {
   };
 
   render() {
-    const { children: page, nav } = this.props;
-
+    const { children: page, nav, config } = this.props;
+    const { googleAnalyticsId } = config;
+    console.log('asdasdasdasd', googleAnalyticsId);
     return (
       <div className={`${this.state.loaded ? '' : 'no-js'}`}>
+        {googleAnalyticsId && <span>
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+          <script dangerouslySetInnerHTML={{__html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${googleAnalyticsId}');`}} />
+        </span>}
         {nav || <Nav/>}
         {page}
       </div>
