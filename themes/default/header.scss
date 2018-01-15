@@ -12,8 +12,8 @@
     height: 0;
     width: 100%;
 
-    @media (min-width: 1400px) {
-      min-height: $page-height-xl;
+    @media (min-height: 900px) {
+      min-height: $page-height-xl!important;
     }
 
     .slide {
@@ -30,8 +30,8 @@
     .slider-frame {
       min-height: $page-height;
 
-      @media (min-width: 1400px) {
-        min-height: $page-height-xl;
+      @media (min-height: 900px) {
+        min-height: $page-height-xl!important;
       }
 
       @media screen and (orientation: landscape) and (max-height: 639px) {

@@ -8,7 +8,7 @@
   min-height: $page-height;
   max-width: $page-max-width;
 
-  @media (min-width: 1400px) {
-    min-height: $page-height-xl;
+  @media (min-height: 900px) {
+    min-height: $page-height-xl!important;
   }
 }
