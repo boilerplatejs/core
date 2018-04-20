@@ -99,3 +99,8 @@ export const api = async(async (req, params, resolve, reject) => {
         reject(error);
     }
 });
+
+export const refresh = async(async (req, params, resolve, reject) => {
+    delete cache.layout;
+    resolve({});
+});
