@@ -5,6 +5,8 @@ import _ from 'lodash';
 const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts', 'options'];
 const LAYOUT_JSON_KEYS = ['headers', 'sections', 'options'];
 
+const cache = {};
+
 const getValues = records => records.map(record => record.dataValues);
 
 const parse = (object, keys) => {
@@ -59,7 +61,7 @@ const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
     const models = getModels(bundle);
     const {Environment} = models;
 
-    return await Environment.findOne({
+    return (cache.environment = cache.environment || await Environment.findOne({
         where: { name },
         include: [{
             model: models[configuration],
@@ -77,10 +79,8 @@ const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
         .catch(e => {
             console.error(e);
             return {};
-        });
+        }));
 };
-
-const cache = {};
 
 export const layout = async(async (req, params, resolve, reject) => {
     resolve((cache.layout = cache.layout || await getLayoutConfig()));
@@ -102,5 +102,6 @@ export const api = async(async (req, params, resolve, reject) => {
 
 export const refresh = async(async (req, params, resolve, reject) => {
     delete cache.layout;
+    delete cache.environment;
     resolve({});
 });
