@@ -5,7 +5,7 @@ import _ from 'lodash';
 const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts', 'options'];
 const LAYOUT_JSON_KEYS = ['headers', 'sections', 'options'];
 
-const cache = {};
+const cache = { environment: {} };
 
 const getValues = records => records.map(record => record.dataValues);
 
@@ -61,7 +61,7 @@ const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
     const models = getModels(bundle);
     const {Environment} = models;
 
-    return (cache.environment = cache.environment || await Environment.findOne({
+    return (cache.environment[bundle] = cache.environment[bundle] || await Environment.findOne({
         where: { name },
         include: [{
             model: models[configuration],
@@ -102,6 +102,6 @@ export const api = async(async (req, params, resolve, reject) => {
 
 export const refresh = async(async (req, params, resolve, reject) => {
     delete cache.layout;
-    delete cache.environment;
+    cache.environment = {};
     resolve({});
 });
