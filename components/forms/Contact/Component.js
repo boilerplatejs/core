@@ -20,7 +20,7 @@ const domOnlyProps = ({
 
 @reduxForm({
   form: 'contact',
-  fields: ['name', 'email'],
+  fields: ['firstName', 'lastName', 'email'],
   validate: Validator
   // asyncBlurFields: ['email'],
   // asyncValidate: (data, dispatch, {send}) => !data.email ? Promise.resolve({}) : send(data)
@@ -42,38 +42,31 @@ export default class extends Component {
   render() {
     const {
       asyncValidating,
-      fields: {name, email},
+      fields: {firstName, lastName, email},
       handleSubmit,
       resetForm,
       } = this.props;
     const styles = require('./Component.scss');
-    const renderInput = (field, label, showAsyncValidating) =>
-      <div className={'form-group' + (field.error && field.touched ? ' has-error' : '')}>
-        <label htmlFor={field.name} className="col-xs-2">{label}</label>
-        <div className={'col-xs-8 ' + styles.inputGroup}>
+    const renderInput = (field, label, placeholder, showAsyncValidating) =>
+      <div className={'form-group ' + field.name + (field.error && field.touched ? ' has-error' : '')}>
+        <div className={styles.inputGroup} data-label={label} data-error={field.error && field.touched && field.error}>
           {showAsyncValidating && asyncValidating && <i className={'fa fa-cog fa-spin ' + styles.cog}/>}
-          <input type="text" className="form-control" id={field.name} {...domOnlyProps(field)}/>
-          {field.error && field.touched && <div className="text-danger">{field.error}</div>}
+          <input placeholder={placeholder || label} type="text" className="form-control" id={field.name} {...domOnlyProps(field)}/>
         </div>
       </div>;
 
     return (
-      <div>
-        <form className="form-horizontal" onSubmit={handleSubmit}>
-          {renderInput(name, 'Full Name')}
-          {renderInput(email, 'Email', true)}
-          <div className="form-group">
-            <div className="col-xs-offset-2 col-xs-10">
-              <button className="btn btn-success" type="submit">
-                <i className="fa fa-paper-plane"/> Submit
-              </button>
-              <button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
-                <i className="fa fa-undo"/> Reset
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+      <form className="form-horizontal" onSubmit={handleSubmit}>
+        {renderInput(firstName, 'First Name', 'i.e., Stella')}
+        {renderInput(lastName, 'Last Name', 'i.e., Spaghetti')}
+        {renderInput(email, 'Email Address', 'i.e., stella@spaghetti.com', true)}
+        <div className="form-group submit">
+          <button className="btn btn-success" type="submit">Sign Up</button>
+          {/*<button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
+            <i className="fa fa-undo"/> Reset
+          </button>*/}
+        </div>
+      </form>
     );
   }
 }
