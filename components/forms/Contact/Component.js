@@ -20,6 +20,7 @@ const domOnlyProps = ({
 
 @reduxForm({
   form: 'contact',
+  enableReinitialize: true,
   fields: ['firstName', 'lastName', 'email', 'comment', 'newsletter'],
   validate: Validator
   // asyncBlurFields: ['email'],
@@ -60,8 +61,6 @@ export default class extends Component {
       newsletterText,
       quote
     } = this.props;
-
-    newsletter.value = typeof newsletter.value === 'undefined' ? true : newsletter.value;
 
     const renderInput = (field, label, placeholder, showAsyncValidating) =>
       <div className={'form-group ' + field.name + (field.error && field.touched ? ' has-error' : '')}>
