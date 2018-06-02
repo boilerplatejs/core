@@ -18,6 +18,9 @@ export default class extends Model {
     email = { type: DataTypes.STRING, allowNull: false, primaryKey: true };
     firstName = DataTypes.STRING;
     lastName = DataTypes.STRING;
+    quote = { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false };
+    newsletter = { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false };
+    comment = { type: DataTypes.TEXT, allowNull: true };
 
     /**
      * Descriptors

@@ -20,7 +20,7 @@ const domOnlyProps = ({
 
 @reduxForm({
   form: 'contact',
-  fields: ['firstName', 'lastName', 'email'],
+  fields: ['firstName', 'lastName', 'email', 'comment', 'newsletter'],
   validate: Validator
   // asyncBlurFields: ['email'],
   // asyncValidate: (data, dispatch, {send}) => !data.email ? Promise.resolve({}) : send(data)
@@ -36,17 +36,33 @@ export default class extends Component {
     resetForm: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     pristine: PropTypes.bool.isRequired,
-    valid: PropTypes.bool.isRequired
+    valid: PropTypes.bool.isRequired,
+    submitText: PropTypes.string,
+    newsletterText: PropTypes.string,
+    quote: PropTypes.bool
+  };
+
+  static defaultProps = {
+    submitText: 'Sign Up',
+    newsletterText: 'Sign up for our newsletter!',
+    quote: false
   };
 
   render() {
+    const styles = require('./Component.scss');
+
     const {
       asyncValidating,
-      fields: {firstName, lastName, email},
+      fields: {firstName, lastName, email, comment, newsletter},
       handleSubmit,
-      resetForm,
-      } = this.props;
-    const styles = require('./Component.scss');
+      // resetForm,
+      submitText,
+      newsletterText,
+      quote
+    } = this.props;
+
+    newsletter.value = typeof newsletter.value === 'undefined' ? true : newsletter.value;
+
     const renderInput = (field, label, placeholder, showAsyncValidating) =>
       <div className={'form-group ' + field.name + (field.error && field.touched ? ' has-error' : '')}>
         <div className={styles.inputGroup} data-label={label} data-error={field.error && field.touched && field.error}>
@@ -60,8 +76,19 @@ export default class extends Component {
         {renderInput(firstName, 'First Name', 'i.e., Stella')}
         {renderInput(lastName, 'Last Name', 'i.e., Spaghetti')}
         {renderInput(email, 'Email Address', 'i.e., stella@spaghetti.com', true)}
+        {quote && <div className={'form-group ' + comment.name + (comment.error && comment.touched ? ' has-error' : '')}>
+          <div className={styles.inputGroup} data-label="Comment" data-error={comment.error && comment.touched && comment.error}>
+            <textarea id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
+          </div>
+        </div>}
+        {quote && <div className={'form-group ' + newsletter.name}>
+          <label>
+            <input id={newsletter.name} type="checkbox" {...domOnlyProps(newsletter)} />
+            <span>{newsletterText}</span>
+          </label>
+        </div>}
         <div className="form-group submit">
-          <button className="btn btn-success" type="submit">Sign Up</button>
+          <button className="btn btn-success" type="submit">{submitText}</button>
           {/*<button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
             <i className="fa fa-undo"/> Reset
           </button>*/}
