@@ -37,7 +37,7 @@ export default class extends Component {
   };
 
   componentDidMount() {
-    ReactGA.pageview(this.props.location.pathname);
+    // ReactGA.pageview(this.props.location.pathname);
 
     if (global.scrollTo) {
       global.scrollTo(0, 0);
