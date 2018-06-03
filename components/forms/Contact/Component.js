@@ -76,13 +76,13 @@ export default class extends Component {
         {renderInput(lastName, 'Last Name', 'i.e., Spaghetti')}
         {renderInput(email, 'Email Address', 'i.e., stella@spaghetti.com', true)}
         {quote && <div className={'form-group ' + comment.name + (comment.error && comment.touched ? ' has-error' : '')}>
-          <div className={styles.inputGroup} data-label="Comment" data-error={comment.error && comment.touched && comment.error}>
-            <textarea id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
+          <div className={styles.inputGroup} data-label="Message" data-error={comment.error && comment.touched && comment.error}>
+            <textarea placeholder="i.e., Buongiorno!" id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
           </div>
         </div>}
         {quote && <div className={'form-group ' + newsletter.name}>
           <label>
-            <input id={newsletter.name} type="checkbox" {...domOnlyProps(newsletter)} />
+            <input defaultChecked id={newsletter.name} type="checkbox" {...domOnlyProps(newsletter)} />
             <span>{newsletterText}</span>
           </label>
         </div>}
