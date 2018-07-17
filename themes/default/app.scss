@@ -7,3 +7,18 @@ body {
     width: 100%;
   }
 }
+
+.progress-loader {
+  transition: opacity .25s;
+  opacity: 0;
+
+  &.loading {
+      opacity: 1;
+  }
+
+  > div {
+      transition: width .5s;
+      height: 1px;
+      background: $primary-green-color;
+  }
+}
