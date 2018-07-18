@@ -41,7 +41,7 @@ export default class extends Component {
 
     return (
       <section className={`progress-loader ${loading ? 'loading' : ''}`}>
-        <div style={{ width: `${progress * 100}%` }}></div>
+        <div style={{ transform: `scale3d(${progress || 0}, 1, 1)` }}></div>
       </section>
     );
   }
