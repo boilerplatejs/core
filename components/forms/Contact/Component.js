@@ -39,12 +39,15 @@ export default class extends Component {
     pristine: PropTypes.bool.isRequired,
     valid: PropTypes.bool.isRequired,
     submitText: PropTypes.string,
+    cancelText: PropTypes.string,
+    onCancel: PropTypes.func,
     newsletterText: PropTypes.string,
     quote: PropTypes.bool
   };
 
   static defaultProps = {
-    submitText: 'Sign Up',
+    submitText: 'Submit',
+    cancelText: 'Cancel',
     newsletterText: 'Sign up for our newsletter!',
     quote: false
   };
@@ -58,6 +61,8 @@ export default class extends Component {
       handleSubmit,
       // resetForm,
       submitText,
+      cancelText,
+      onCancel,
       newsletterText,
       quote
     } = this.props;
@@ -87,6 +92,7 @@ export default class extends Component {
           </label>
         </div>}
         <div className="form-group submit">
+          {onCancel && <button className="btn btn-danger" onClick={onCancel}>{cancelText}</button>}
           <button className="btn btn-success" type="submit">{submitText}</button>
           {/*<button className="btn btn-warning" onClick={resetForm} style={{marginLeft: 15}}>
             <i className="fa fa-undo"/> Reset
