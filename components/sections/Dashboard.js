@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {PropTypes} from 'prop-types';
-import { LinkContainer } from 'react-router-bootstrap';
+import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {Section} from '@machete-platform/core-bundle/components/layout';
 import * as Auth from '@machete-platform/core-bundle/controllers/Auth';
@@ -30,9 +30,9 @@ export default class extends Section {
           </p>
 
           <p>
-            <LinkContainer to="/chat">
+            <Link to="/chat">
               <button className="btn btn-primary">Go to Chat</button>
-            </LinkContainer>
+            </Link>
           </p>
 
           <div>

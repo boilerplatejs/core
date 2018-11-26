@@ -52,8 +52,8 @@ export default class extends Component {
 
     return (
       <section className={`${className} page`}>
-        <Helmet title={config.title} meta={config.meta} link={config.link} script={config.script}/>
-        <Helmet title={title} meta={meta} link={link} script={script}/>
+        <Helmet title={title || config.title} meta={config.meta} link={config.link} script={config.script}/>
+        <Helmet title={title || config.title} meta={meta} link={link} script={script}/>
         {children || <div>
           {headers.length ? (
             <section className={`${single ? 'single' : ''} header container`}>

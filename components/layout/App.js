@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {asyncConnect} from 'redux-async-connect';
+import {asyncConnect} from 'redux-async-connect-react16';
 import ReactGA from 'react-ga';
 import {Nav} from '@machete-platform/core-bundle/components/layout';
 import * as Config from '@machete-platform/core-bundle/controllers/Config';
@@ -23,7 +23,6 @@ import * as Config from '@machete-platform/core-bundle/controllers/Config';
 
 export default class extends Component {
   static propTypes = {
-    children: PropTypes.object.isRequired,
     config: PropTypes.object,
     nav: PropTypes.object
   };
