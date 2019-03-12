@@ -42,6 +42,8 @@ export default class extends Component {
     if (global.scrollTo) {
       global.scrollTo(0, 0);
     }
+
+    this.props.transition({ progress: 1 });
   }
 
   afterSlide = header => this.props.transition({ header });
