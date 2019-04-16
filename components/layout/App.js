@@ -50,7 +50,7 @@ export default class extends Component {
     const { googleAnalyticsId } = config;
 
     return (
-      <div className={`${this.state.loaded ? '' : 'no-js'}`}>
+      <section className={`${this.state.loaded ? '' : 'no-js'}`}>
         {nav || <Nav/>}
         {page}
         {googleAnalyticsId && <span>
@@ -61,7 +61,7 @@ export default class extends Component {
             gtag('js', new Date());
             gtag('config', '${googleAnalyticsId}');`}} />
         </span>}
-      </div>
+      </section>
     );
   }
 }
