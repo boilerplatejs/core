@@ -90,7 +90,7 @@ export const components = async(async (req, params, resolve, reject) => {
     resolve(await getEnvironmentConfig(req.query.bundle, 'ComponentConfiguration'));
 });
 
-export const api = async(async (req, params, resolve, reject) => {
+export const service = async(async (req, params, resolve, reject) => {
     if (req.headers.host.split(':')[0].toLowerCase() === 'localhost') {
         resolve(await getEnvironmentConfig(req.query.bundle, 'ApiConfiguration'));
     } else {
