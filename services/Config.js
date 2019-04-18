@@ -92,7 +92,7 @@ export const components = async(async (req, params, resolve, reject) => {
 
 export const service = async(async (req, params, resolve, reject) => {
     if (req.headers.host.split(':')[0].toLowerCase() === 'localhost') {
-        resolve(await getEnvironmentConfig(req.query.bundle, 'ApiConfiguration'));
+        resolve(await getEnvironmentConfig(req.query.bundle, 'ServiceConfiguration'));
     } else {
         const error = new Error('Unauthorized');
         error.status = 403;
