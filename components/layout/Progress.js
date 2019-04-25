@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {transition} from '@machete-platform/core-bundle/controllers/Transition';
+import {transition} from '@machete-platform/core-bundle/actions/Transition';
 
 const PROGRESS_SPEED = 500;
 const PROGRESS_INTERVAL = .20;

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {transition} from '@machete-platform/core-bundle/controllers/Transition';
+import {transition} from '@machete-platform/core-bundle/actions/Transition';
 import {Footer} from '@machete-platform/core-bundle/components/layout';
 
 // const concat = (...args) => {

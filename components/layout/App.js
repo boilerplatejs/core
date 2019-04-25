@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {asyncConnect} from 'redux-async-connect-react16';
 import ReactGA from 'react-ga';
 import {Nav} from '@machete-platform/core-bundle/components/layout';
-import * as Config from '@machete-platform/core-bundle/controllers/Config';
+import * as Config from '@machete-platform/core-bundle/actions/Config';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {

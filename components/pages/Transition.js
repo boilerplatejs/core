@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
 import {Page, Header, Footer} from '@machete-platform/core-bundle/components/layout';
-import {transition} from '@machete-platform/core-bundle/controllers/Transition';
+import {transition} from '@machete-platform/core-bundle/actions/Transition';
 
 @connect(state => ({
   section: state['@machete-platform/core-bundle'].Transition.section || 0,

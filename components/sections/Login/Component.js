@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {Section} from '@machete-platform/core-bundle/components/layout';
-import * as Auth from '@machete-platform/core-bundle/controllers/Auth';
+import * as Auth from '@machete-platform/core-bundle/actions/Auth';
 
 @connect(state => ({user: state['@machete-platform/core-bundle'].Auth.user}), Auth)
 
