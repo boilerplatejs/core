@@ -1,4 +1,4 @@
 export Contact from './Contact';
-export Auth from './Auth';
+export Session from './Session';
 export Transition from './Transition';
 export Config from './Config';

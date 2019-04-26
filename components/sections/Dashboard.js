@@ -3,9 +3,9 @@ import {PropTypes} from 'prop-types';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {Section} from '@machete-platform/core-bundle/components/layout';
-import * as Auth from '@machete-platform/core-bundle/actions/Auth';
+import * as Session from '@machete-platform/core-bundle/actions/Session';
 
-@connect(state => ({user: state['@machete-platform/core-bundle'].Auth.user}), Auth)
+@connect(state => ({user: state['@machete-platform/core-bundle'].Session.user}), Session)
 
 export default class extends Section {
   static propTypes = {
