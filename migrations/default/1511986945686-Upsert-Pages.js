@@ -6,20 +6,20 @@ export default class {
 
     await Page.create({
       route: '*',
-      title: 'VitruvianTech - Error',
+      title: 'We\'re Sorry! - Machete™',
       sections: '["@machete-platform/core-bundle:Error"]',
       status: 404
     });
 
     await Page.create({
       route: 'login',
-      title: 'VitruvianTech - Login',
+      title: 'Login - Machete™',
       sections: '["@machete-platform/core-bundle:Login"]'
     });
 
     await Page.create({
       route: 'dashboard',
-      title: 'VitruvianTech - Dashboard',
+      title: 'Account - Machete™',
       sections: '["@machete-platform/core-bundle:Dashboard"]',
       auth: true
     });
@@ -31,7 +31,7 @@ export default class {
     await Page.destroy({
       where: {
         route: '*',
-        title: 'VitruvianTech - Error',
+        title: 'We\'re Sorry! - Machete™',
         sections: '["@machete-platform/core-bundle:Error"]',
         status: 404
       }
@@ -40,7 +40,7 @@ export default class {
     await Page.destroy({
       where: {
         route: 'login',
-        title: 'VitruvianTech - Login',
+        title: 'Login - Machete™',
         sections: '["@machete-platform/core-bundle:Login"]'
       }
     });
@@ -48,7 +48,7 @@ export default class {
     await Page.destroy({
       where: {
         route: 'dashboard',
-        title: 'VitruvianTech - Dashboard',
+        title: 'Account - Machete™',
         sections: '["@machete-platform/core-bundle:Dashboard"]',
         auth: true
       }

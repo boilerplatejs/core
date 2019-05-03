@@ -6,7 +6,7 @@ export default class {
 
     await models.Link.create({
       rel: 'shortcut icon',
-      href: '/favicon.png',
+      href: '/@machete-platform/core-bundle/images/favicon.png',
       sizes: '401x401'
     });
   }
@@ -17,7 +17,7 @@ export default class {
     await models.Link.destroy({
       where: {
         rel: 'shortcut icon',
-        href: '/favicon.png',
+        href: '/@machete-platform/core-bundle/images/favicon.png',
         sizes: '401x401'
       }
     });

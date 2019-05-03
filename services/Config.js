@@ -57,7 +57,7 @@ const getLayoutConfig = async () => {
     return { app, theme, title, pages };
 };
 
-const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
+const getEnvironmentConfig = async (bundle, configuration, name = __CONFIG__ || __ENV__) => {
     const models = getModels(bundle);
     const {Environment} = models;
 
@@ -77,8 +77,11 @@ const getEnvironmentConfig = async (bundle, configuration, name = __ENV__) => {
         })
         .then(configuration => configuration.dataValues || {})
         .catch(e => {
-            console.error(e);
-            return {};
+            if (__CONFIG__ && name === __CONFIG__) return getEnvironmentConfig(bundle, configuration, __ENV__);
+            else {
+                console.error(e);
+                return {};
+            }
         }));
 };
 
