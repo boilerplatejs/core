@@ -10,6 +10,7 @@ export default class {
       app: '@machete-platform/core-bundle:App',
       page: '@machete-platform/core-bundle:Page',
       fallbackExpression: 'MSIE (?:[0-9]|10).\\d',
+      auth: 'login',
       enabled: true
     });
   }
@@ -19,12 +20,7 @@ export default class {
     
     return await models.Layout.destroy({
       where: {
-        title: 'Machete™ Theme Platform',
-        theme: '@machete-platform/core-bundle',
-        app: '@machete-platform/core-bundle:App',
-        page: '@machete-platform/core-bundle:Page',
-        fallbackExpression: 'MSIE (?:[0-9]|10).\\d',
-        enabled: true
+        title: 'Machete™ Theme Platform'
       }
     });
   }

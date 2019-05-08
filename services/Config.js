@@ -30,7 +30,7 @@ const getLayoutConfig = async () => {
     const parseLayout = layout => parse(layout, LAYOUT_JSON_KEYS);
     const {Layout, MetaTag, Link, Script, Page} = getModels();
 
-    const {app, theme, title, page, headers, sections, options} = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
+    const {app, theme, title, page, headers, sections, options, auth} = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
         .then(getValues)
         .then(records => records[0]);
 
@@ -54,7 +54,7 @@ const getLayoutConfig = async () => {
         .then(pages => _.keyBy(pages, 'route'))
         .then(pages => Object.assign(pages, { '$': parseLayout({ title, page, meta, link, script, headers, sections, options }) }));
 
-    return { app, theme, title, pages };
+    return { app, theme, title, pages, auth };
 };
 
 const getEnvironmentConfig = async (bundle, configuration, name = __CONFIG__ || __ENV__) => {
