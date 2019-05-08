@@ -30,7 +30,7 @@ const getLayoutConfig = async () => {
     const parseLayout = layout => parse(layout, LAYOUT_JSON_KEYS);
     const {Layout, MetaTag, Link, Script, Page} = getModels();
 
-    const {app, theme, title, page, headers, sections, options} = await Layout.findAll({ limit: 1, order: [['id', 'DESC']] })
+    const {app, theme, title, page, headers, sections, options} = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
         .then(getValues)
         .then(records => records[0]);
 

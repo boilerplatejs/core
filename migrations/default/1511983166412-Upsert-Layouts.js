@@ -9,7 +9,8 @@ export default class {
       theme: '@machete-platform/core-bundle',
       app: '@machete-platform/core-bundle:App',
       page: '@machete-platform/core-bundle:Page',
-      fallbackExpression: 'MSIE (?:[0-9]|10).\\d'
+      fallbackExpression: 'MSIE (?:[0-9]|10).\\d',
+      enabled: true
     });
   }
 
@@ -22,7 +23,8 @@ export default class {
         theme: '@machete-platform/core-bundle',
         app: '@machete-platform/core-bundle:App',
         page: '@machete-platform/core-bundle:Page',
-        fallbackExpression: 'MSIE (?:[0-9]|10).\\d'
+        fallbackExpression: 'MSIE (?:[0-9]|10).\\d',
+        enabled: true
       }
     });
   }
