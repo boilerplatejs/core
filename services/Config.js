@@ -25,6 +25,18 @@ const parse = (object, keys) => {
     return object;
 };
 
+const getSessionConfig = async () => {
+    const {Layout, Session} = getModels();
+
+    const layout = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
+        .then(getValues)
+        .then(records => records[0].id);
+
+    return await Session.findAll({ where: { LayoutId: layout } })
+        .then(getValues)
+        .then(records => records.map(record => record.service));
+};
+
 const getLayoutConfig = async () => {
     const parsePage = page => parse(page, PAGE_JSON_KEYS);
     const parseLayout = layout => parse(layout, LAYOUT_JSON_KEYS);
@@ -85,6 +97,10 @@ const getEnvironmentConfig = async (bundle, configuration, name = __CONFIG__ || 
         }));
 };
 
+export const session = async(async (req, params, resolve, reject) => {
+    resolve((cache.session = cache.session || await getSessionConfig()));
+});
+
 export const layout = async(async (req, params, resolve, reject) => {
     resolve((cache.layout = cache.layout || await getLayoutConfig()));
 });
@@ -105,6 +121,7 @@ export const service = async(async (req, params, resolve, reject) => {
 
 export const refresh = async(async (req, params, resolve, reject) => {
     delete cache.layout;
+    delete cache.session;
     cache.environment = {};
     resolve({});
 });

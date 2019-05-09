@@ -26,13 +26,27 @@ export function load() {
 }
 
 export function login(name) {
+  const credentials = { data: { name } };
+
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: (client) => client.post('/@machete-platform/core-bundle/Session/login', {
-      data: {
-        name: name
+    promise: async client => {
+      const services = await client.get('/@machete-platform/core-bundle/Config/session');
+
+      try {
+        await Promise.all(services.map(service => {
+          service = service.split(':');
+
+          return client.post(`/${service[0]}/${service[1] || 'Session'}/login`, credentials)
+            .then(data => credentials.data[service[0]] = Object.assign(credentials.data[service[0]] || {}, data));
+        }));
+      } catch (e) {
+        console.error(e);
+        return Promise.reject(e);
       }
-    })
+
+      return client.post('/@machete-platform/core-bundle/Session/login', credentials);
+    }
   };
 }
 
