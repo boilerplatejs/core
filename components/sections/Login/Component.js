@@ -16,7 +16,7 @@ export default class extends Section {
   handleSubmit = (event) => {
     event.preventDefault();
     const input = this.refs.username;
-    this.props.login(input.value);
+    this.props.login({ name: input.value });
     input.value = '';
   };
 

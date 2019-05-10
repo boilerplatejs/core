@@ -25,8 +25,9 @@ export function load() {
   };
 }
 
-export function login(name) {
-  const credentials = { data: { name } };
+export function login(data) {
+  const credentials = { data };
+  const user = { name: data.name };
 
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
@@ -38,14 +39,14 @@ export function login(name) {
           service = service.split(':');
 
           return client.post(`/${service[0]}/${service[1] || 'Session'}/login`, credentials)
-            .then(data => credentials.data[service[0]] = Object.assign(credentials.data[service[0]] || {}, data));
+            .then(data => user[service[0]] = Object.assign(user[service[0]] || {}, data));
         }));
       } catch (e) {
         console.error(e);
         return Promise.reject(e);
       }
 
-      return client.post('/@machete-platform/core-bundle/Session/login', credentials);
+      return client.post('/@machete-platform/core-bundle/Session/login', { data: user });
     }
   };
 }
@@ -53,7 +54,19 @@ export function login(name) {
 export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
-    promise: (client) => client.get('/@machete-platform/core-bundle/Session/logout')
+    promise: async client => {
+      const services = await client.get('/@machete-platform/core-bundle/Config/session')
+        .then(services => services.map(service => service.split(':')));
+
+      try {
+        await Promise.all(services.map(service => client.post(`/${service[0]}/${service[1] || 'Session'}/logout`)));
+      } catch (e) {
+        console.error(e);
+        return Promise.reject(e);
+      }
+
+      return client.post('/@machete-platform/core-bundle/Session/logout');
+    }
   };
 }
 
