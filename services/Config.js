@@ -125,3 +125,5 @@ export const refresh = async(async (req, params, resolve, reject) => {
     cache.environment = {};
     resolve({});
 });
+
+export const services = service;
