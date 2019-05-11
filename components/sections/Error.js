@@ -7,7 +7,7 @@ export default class extends Section {
       <Section className="text-center">
         <br />
         <h1>Page Not Found</h1>
-        <p>Do you even web surf?</p>
+        <h3>Do you even web surf?</h3>
       </Section>
     );
   }
