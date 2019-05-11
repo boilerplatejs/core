@@ -28,11 +28,11 @@ const parse = (object, keys) => {
 const getSessionConfig = async () => {
     const {Layout, Session} = getModels();
 
-    const layout = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
+    const LayoutId = await Layout.findAll({ where: { enabled: true }, limit: 1, order: [['id', 'DESC']] })
         .then(getValues)
         .then(records => records[0].id);
 
-    return await Session.findAll({ where: { LayoutId: layout } })
+    return await Session.findAll({ where: { LayoutId } })
         .then(getValues)
         .then(records => records.map(record => record.service));
 };

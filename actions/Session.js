@@ -27,7 +27,7 @@ export function load() {
 
 export function login(data) {
   const credentials = { data };
-  const user = { name: data.name };
+  const user = {};
 
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
