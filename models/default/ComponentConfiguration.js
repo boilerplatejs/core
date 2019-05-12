@@ -17,6 +17,8 @@ export default class extends Model {
      */
     googleAnalyticsId = DataTypes.STRING;
     googleAnalyticsDebug = DataTypes.BOOLEAN;
+    auth0Domain = DataTypes.STRING;
+    auth0ClientId = DataTypes.STRING;
 
     /**
      * Descriptors
