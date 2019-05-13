@@ -14,6 +14,11 @@ const initialState = {
   loaded: false
 };
 
+const filter = (namespace) => {
+  const [bundle, service = 'Session'] = namespace.split(':');
+  return !(bundle === '@machete-platform/core-bundle' && service === 'Session');
+};
+
 export function isLoaded(state) {
   return state['@machete-platform/core-bundle'] && state['@machete-platform/core-bundle'].Session && state['@machete-platform/core-bundle'].Session.loaded;
 }
@@ -32,14 +37,15 @@ export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: async client => {
-      const services = await client.get('/@machete-platform/core-bundle/Config/session');
+      const services = await client.get('/@machete-platform/core-bundle/Config/session')
+        .then(services => services.filter(filter));
 
       try {
-        await Promise.all(services.map(service => {
-          service = service.split(':');
+        await Promise.all(services.map(namespace => {
+          const [bundle, service = 'Session'] = namespace.split(':');
 
-          return client.post(`/${service[0]}/${service[1] || 'Session'}/login`, credentials)
-            .then(data => user[service[0]] = Object.assign(user[service[0]] || {}, data));
+          return client.post(`/${bundle}/${service}/login`, credentials)
+            .then(data => user[bundle] = Object.assign(user[bundle] || {}, { [service]: data }));
         }));
       } catch (e) {
         console.error(e);
@@ -56,6 +62,7 @@ export function logout() {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async client => {
       const services = await client.get('/@machete-platform/core-bundle/Config/session')
+        .then(services => services.filter(filter))
         .then(services => services.map(service => service.split(':')));
 
       try {
