@@ -81,8 +81,8 @@ const getEnvironmentConfig = async (bundle, configuration, name = __CONFIG__ || 
         }]
     })
         .then(environment => {
-            if (environment) {
-                return environment[configuration] || {};
+            if (environment || name === __ENV__) {
+                return environment ? environment[configuration] || {} : {};
             } else {
                 throw new Error(`Environment '${name}' does not exist.`);
             }
