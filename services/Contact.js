@@ -3,7 +3,7 @@ import {Contact} from '@machete-platform/core-bundle/models/default';
 
 export const create = async(async (req, params, resolve, reject) => {
     const {email, newsletter, quote} = req.body;
-    const contact = await Contact.find({ where: { email } });
+    const contact = await Contact.findOne({ where: { email } });
 
     req.body.newsletter = req.body.newsletter || false;
 
