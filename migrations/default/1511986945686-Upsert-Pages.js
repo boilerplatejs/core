@@ -1,4 +1,4 @@
-import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
+import {getModels} from '@boilerplatejs/core/lib/Sequelize';
 
 export default class {
   static async up(models, sequelize, DataTypes) {
@@ -6,21 +6,21 @@ export default class {
 
     await Page.create({
       route: '*',
-      title: 'We\'re Sorry! - Machete™',
-      sections: '["@machete-platform/core-bundle:Error"]',
+      title: 'We\'re Sorry! - BoilerplateJS™',
+      sections: '["@boilerplatejs/core:Error"]',
       status: 404
     });
 
     await Page.create({
       route: 'login',
-      title: 'Login - Machete™',
-      sections: '["@machete-platform/core-bundle:Login"]'
+      title: 'Login - BoilerplateJS™',
+      sections: '["@boilerplatejs/core:Login"]'
     });
 
     await Page.create({
       route: 'dashboard',
-      title: 'Account - Machete™',
-      sections: '["@machete-platform/core-bundle:Dashboard"]',
+      title: 'Account - BoilerplateJS™',
+      sections: '["@boilerplatejs/core:Dashboard"]',
       auth: true
     });
   }
@@ -31,8 +31,8 @@ export default class {
     await Page.destroy({
       where: {
         route: '*',
-        title: 'We\'re Sorry! - Machete™',
-        sections: '["@machete-platform/core-bundle:Error"]',
+        title: 'We\'re Sorry! - BoilerplateJS™',
+        sections: '["@boilerplatejs/core:Error"]',
         status: 404
       }
     });
@@ -40,16 +40,16 @@ export default class {
     await Page.destroy({
       where: {
         route: 'login',
-        title: 'Login - Machete™',
-        sections: '["@machete-platform/core-bundle:Login"]'
+        title: 'Login - BoilerplateJS™',
+        sections: '["@boilerplatejs/core:Login"]'
       }
     });
 
     await Page.destroy({
       where: {
         route: 'dashboard',
-        title: 'Account - Machete™',
-        sections: '["@machete-platform/core-bundle:Dashboard"]',
+        title: 'Account - BoilerplateJS™',
+        sections: '["@boilerplatejs/core:Dashboard"]',
         auth: true
       }
     });

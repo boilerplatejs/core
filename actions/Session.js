@@ -1,14 +1,14 @@
-const LOAD = '@machete-platform/core-bundle/Session/LOAD';
-const LOAD_SUCCESS = '@machete-platform/core-bundle/Session/LOAD_SUCCESS';
-const LOAD_FAIL = '@machete-platform/core-bundle/Session/LOAD_FAIL';
+const LOAD = '@boilerplatejs/core/Session/LOAD';
+const LOAD_SUCCESS = '@boilerplatejs/core/Session/LOAD_SUCCESS';
+const LOAD_FAIL = '@boilerplatejs/core/Session/LOAD_FAIL';
 
-const LOGIN = '@machete-platform/core-bundle/Session/LOGIN';
-const LOGIN_SUCCESS = '@machete-platform/core-bundle/Session/LOGIN_SUCCESS';
-const LOGIN_FAIL = '@machete-platform/core-bundle/Session/LOGIN_FAIL';
+const LOGIN = '@boilerplatejs/core/Session/LOGIN';
+const LOGIN_SUCCESS = '@boilerplatejs/core/Session/LOGIN_SUCCESS';
+const LOGIN_FAIL = '@boilerplatejs/core/Session/LOGIN_FAIL';
 
-const LOGOUT = '@machete-platform/core-bundle/Session/LOGOUT';
-const LOGOUT_SUCCESS = '@machete-platform/core-bundle/Session/LOGOUT_SUCCESS';
-const LOGOUT_FAIL = '@machete-platform/core-bundle/Session/LOGOUT_FAIL';
+const LOGOUT = '@boilerplatejs/core/Session/LOGOUT';
+const LOGOUT_SUCCESS = '@boilerplatejs/core/Session/LOGOUT_SUCCESS';
+const LOGOUT_FAIL = '@boilerplatejs/core/Session/LOGOUT_FAIL';
 
 const initialState = {
   loaded: false
@@ -16,17 +16,17 @@ const initialState = {
 
 const filter = (namespace) => {
   const [bundle, service = 'Session'] = namespace.split(':');
-  return !(bundle === '@machete-platform/core-bundle' && service === 'Session');
+  return !(bundle === '@boilerplatejs/core' && service === 'Session');
 };
 
 export function isLoaded(state) {
-  return state['@machete-platform/core-bundle'] && state['@machete-platform/core-bundle'].Session && state['@machete-platform/core-bundle'].Session.loaded;
+  return state['@boilerplatejs/core'] && state['@boilerplatejs/core'].Session && state['@boilerplatejs/core'].Session.loaded;
 }
 
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/@machete-platform/core-bundle/Session/load')
+    promise: (client) => client.get('/@boilerplatejs/core/Session/load')
   };
 }
 
@@ -37,7 +37,7 @@ export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: async client => {
-      const services = await client.get('/@machete-platform/core-bundle/Config/session')
+      const services = await client.get('/@boilerplatejs/core/Config/session')
         .then(services => services.filter(filter));
 
       try {
@@ -52,7 +52,7 @@ export function login(data) {
         return Promise.reject(e);
       }
 
-      return client.post('/@machete-platform/core-bundle/Session/login', { data: user });
+      return client.post('/@boilerplatejs/core/Session/login', { data: user });
     }
   };
 }
@@ -61,7 +61,7 @@ export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async client => {
-      const services = await client.get('/@machete-platform/core-bundle/Config/session')
+      const services = await client.get('/@boilerplatejs/core/Config/session')
         .then(services => services.filter(filter))
         .then(services => services.map(service => service.split(':')));
 
@@ -72,7 +72,7 @@ export function logout() {
         return Promise.reject(e);
       }
 
-      return client.post('/@machete-platform/core-bundle/Session/logout');
+      return client.post('/@boilerplatejs/core/Session/logout');
     }
   };
 }

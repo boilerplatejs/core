@@ -1,4 +1,4 @@
-import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
+import {getModels} from '@boilerplatejs/core/lib/Sequelize';
 
 export default class {
   static async up(models, sequelize, DataTypes) {
@@ -6,7 +6,7 @@ export default class {
 
     await models.Link.create({
       rel: 'shortcut icon',
-      href: '/@machete-platform/core-bundle/images/favicon.png',
+      href: '/@boilerplatejs/core/images/favicon.png',
       sizes: '401x401'
     });
   }
@@ -17,7 +17,7 @@ export default class {
     await models.Link.destroy({
       where: {
         rel: 'shortcut icon',
-        href: '/@machete-platform/core-bundle/images/favicon.png',
+        href: '/@boilerplatejs/core/images/favicon.png',
         sizes: '401x401'
       }
     });

@@ -3,12 +3,12 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
-import {Page, Header, Footer} from '@machete-platform/core-bundle/components/layout';
-import {transition} from '@machete-platform/core-bundle/actions/Transition';
+import {Page, Header, Footer} from '@boilerplatejs/core/components/layout';
+import {transition} from '@boilerplatejs/core/actions/Transition';
 
 @connect(state => ({
-  section: state['@machete-platform/core-bundle'].Transition.section || 0,
-  header: state['@machete-platform/core-bundle'].Transition.header || 0
+  section: state['@boilerplatejs/core'].Transition.section || 0,
+  header: state['@boilerplatejs/core'].Transition.header || 0
 }), {transition})
 
 export default class extends Page {

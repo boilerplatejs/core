@@ -3,23 +3,23 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {asyncConnect} from 'redux-async-connect-react16';
 import ReactGA from 'react-ga';
-import {Nav} from '@machete-platform/core-bundle/components/layout';
-import * as Config from '@machete-platform/core-bundle/actions/Config';
+import {Nav} from '@boilerplatejs/core/components/layout';
+import * as Config from '@boilerplatejs/core/actions/Config';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
     const state = getState();
     const promises = [];
 
-    if (!state['@machete-platform/core-bundle'].Config['@machete-platform/core-bundle']) {
-      promises.push(dispatch(Config.components('@machete-platform/core-bundle')));
+    if (!state['@boilerplatejs/core'].Config['@boilerplatejs/core']) {
+      promises.push(dispatch(Config.components('@boilerplatejs/core')));
     }
 
     return Promise.all(promises);
   }
 }])
 
-@connect(state => ({ config: state['@machete-platform/core-bundle'].Config['@machete-platform/core-bundle'] }))
+@connect(state => ({ config: state['@boilerplatejs/core'].Config['@boilerplatejs/core'] }))
 
 export default class extends Component {
   static propTypes = {

@@ -1,5 +1,5 @@
-import async from '@machete-platform/core-bundle/lib/Promise';
-import {Contact} from '@machete-platform/core-bundle/models/default';
+import async from '@boilerplatejs/core/lib/Promise';
+import {Contact} from '@boilerplatejs/core/models/default';
 
 export const create = async(async (req, params, resolve, reject) => {
     const {email, newsletter, quote} = req.body;

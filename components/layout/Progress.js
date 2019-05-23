@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {transition} from '@machete-platform/core-bundle/actions/Transition';
+import {transition} from '@boilerplatejs/core/actions/Transition';
 
 const PROGRESS_SPEED = 500;
 const PROGRESS_INTERVAL = .20;
 
-@connect(state => ({ progress: state['@machete-platform/core-bundle'].Transition.progress }), { transition })
+@connect(state => ({ progress: state['@boilerplatejs/core'].Transition.progress }), { transition })
 
 export default class extends Component {
   static propTypes = {

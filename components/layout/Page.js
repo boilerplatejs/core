@@ -4,14 +4,14 @@ import {connect} from 'react-redux';
 import Helmet from 'react-helmet';
 import NukaCarousel from 'nuka-carousel';
 import ReactGA from 'react-ga';
-import {transition} from '@machete-platform/core-bundle/actions/Transition';
-import {Footer} from '@machete-platform/core-bundle/components/layout';
+import {transition} from '@boilerplatejs/core/actions/Transition';
+import {Footer} from '@boilerplatejs/core/components/layout';
 
 // const concat = (...args) => {
 //   return Array.prototype.concat.apply([], args).filter(item => !!item);
 // };
 
-@connect(state => ({ header: state['@machete-platform/core-bundle'].Transition.header || 0 }), {transition})
+@connect(state => ({ header: state['@boilerplatejs/core'].Transition.header || 0 }), {transition})
 
 export default class extends Component {
 

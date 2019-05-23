@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {initialize} from 'redux-form';
-import {Section} from '@machete-platform/core-bundle/components/layout';
-import * as forms from '@machete-platform/core-bundle/components/forms';
-import {create} from '@machete-platform/core-bundle/actions/Contact';
+import {Section} from '@boilerplatejs/core/components/layout';
+import * as forms from '@boilerplatejs/core/components/forms';
+import {create} from '@boilerplatejs/core/actions/Contact';
 
 @connect(() => ({}), {initialize, create})
 

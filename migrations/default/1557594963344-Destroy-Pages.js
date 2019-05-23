@@ -1,4 +1,4 @@
-import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
+import {getModels} from '@boilerplatejs/core/lib/Sequelize';
 
 export default class {
   static async up(models, sequelize, DataTypes) {
@@ -22,14 +22,14 @@ export default class {
 
     await Page.create({
       route: 'login',
-      title: 'Login - Machete™',
-      sections: '["@machete-platform/core-bundle:Login"]'
+      title: 'Login - BoilerplateJS™',
+      sections: '["@boilerplatejs/core:Login"]'
     });
 
     await Page.create({
       route: 'dashboard',
-      title: 'Account - Machete™',
-      sections: '["@machete-platform/core-bundle:Dashboard"]',
+      title: 'Account - BoilerplateJS™',
+      sections: '["@boilerplatejs/core:Dashboard"]',
       auth: true
     });
   }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Section} from '@machete-platform/core-bundle/components/layout';
+import {Section} from '@boilerplatejs/core/components/layout';
 
 export default class extends Section {
   render() {

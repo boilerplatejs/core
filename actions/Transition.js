@@ -1,14 +1,14 @@
-const NEXT = '@machete-platform/core-bundle/Transition/NEXT';
-const NEXT_SUCCESS = '@machete-platform/core-bundle/Transition/NEXT_SUCCESS';
-const NEXT_FAIL = '@machete-platform/core-bundle/Transition/NEXT_FAIL';
+const NEXT = '@boilerplatejs/core/Transition/NEXT';
+const NEXT_SUCCESS = '@boilerplatejs/core/Transition/NEXT_SUCCESS';
+const NEXT_FAIL = '@boilerplatejs/core/Transition/NEXT_FAIL';
 
-const PREVIOUS = '@machete-platform/core-bundle/Transition/PREVIOUS';
-const PREVIOUS_SUCCESS = '@machete-platform/core-bundle/Transition/PREVIOUS_SUCCESS';
-const PREVIOUS_FAIL = '@machete-platform/core-bundle/Transition/PREVIOUS_FAIL';
+const PREVIOUS = '@boilerplatejs/core/Transition/PREVIOUS';
+const PREVIOUS_SUCCESS = '@boilerplatejs/core/Transition/PREVIOUS_SUCCESS';
+const PREVIOUS_FAIL = '@boilerplatejs/core/Transition/PREVIOUS_FAIL';
 
-const TRANSITION = '@machete-platform/core-bundle/Transition/TRANSITION';
-const TRANSITION_SUCCESS = '@machete-platform/core-bundle/Transition/TRANSITION_SUCCESS';
-const TRANSITION_FAIL = '@machete-platform/core-bundle/Transition/TRANSITION_FAIL';
+const TRANSITION = '@boilerplatejs/core/Transition/TRANSITION';
+const TRANSITION_SUCCESS = '@boilerplatejs/core/Transition/TRANSITION_SUCCESS';
+const TRANSITION_FAIL = '@boilerplatejs/core/Transition/TRANSITION_FAIL';
 
 let index = {};
 

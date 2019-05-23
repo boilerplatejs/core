@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-const config = req => req.service.get(`/@machete-platform/core-bundle/Config/components?bundle=@machete-platform/core-bundle`);
+const config = req => req.service.get(`/@boilerplatejs/core/Config/components?bundle=@boilerplatejs/core`);
 
 export const login = async req => await superagent
     .get(`https://${(await config(req)).auth0Domain}.auth0.com/userinfo`)

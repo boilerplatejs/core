@@ -1,14 +1,14 @@
-import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
+import {getModels} from '@boilerplatejs/core/lib/Sequelize';
 
 export default class {
   static async up(models, sequelize, DataTypes) {
     models = getModels();
     
     return await models.Layout.create({
-      title: 'Machete™ Theme Platform',
-      theme: '@machete-platform/core-bundle',
-      app: '@machete-platform/core-bundle:App',
-      page: '@machete-platform/core-bundle:Page',
+      title: 'BoilerplateJS™ - App Development Platform',
+      theme: '@boilerplatejs/core',
+      app: '@boilerplatejs/core:App',
+      page: '@boilerplatejs/core:Page',
       fallbackExpression: 'MSIE (?:[0-9]|10).\\d',
       enabled: true
     });
@@ -19,7 +19,7 @@ export default class {
     
     return await models.Layout.destroy({
       where: {
-        title: 'Machete™ Theme Platform'
+        title: 'BoilerplateJS™ - App Development Platform'
       }
     });
   }

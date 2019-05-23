@@ -1,5 +1,5 @@
-import async from '@machete-platform/core-bundle/lib/Promise';
-import {getModels} from '@machete-platform/core-bundle/lib/Sequelize';
+import async from '@boilerplatejs/core/lib/Promise';
+import {getModels} from '@boilerplatejs/core/lib/Sequelize';
 import _ from 'lodash';
 
 const PAGE_JSON_KEYS = ['headers', 'sections', 'meta', 'links', 'scripts', 'options'];
