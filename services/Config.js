@@ -16,6 +16,11 @@ const parse = (object, keys) => {
         } else {
             try {
                 object[key] = JSON.parse(object[key]);
+
+                if(['scripts', 'links'].indexOf(key) > -1) {
+                    object[key.replace(/s$/, '')] = object[key];
+                    delete object[key];
+                }
             } catch (e) {
                 console.error(e);
             }
