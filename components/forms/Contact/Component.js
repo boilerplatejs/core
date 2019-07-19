@@ -77,12 +77,12 @@ export default class extends Component {
 
     return (
       <form className="form-horizontal" onSubmit={handleSubmit}>
-        {renderInput(firstName, 'First Name', 'i.e., Stella')}
-        {renderInput(lastName, 'Last Name', 'i.e., Spaghetti')}
-        {renderInput(email, 'Email Address', 'i.e., stella@spaghetti.com', true)}
+        {renderInput(firstName, 'First Name', 'Your first name...')}
+        {renderInput(lastName, 'Last Name', '...and last name.')}
+        {renderInput(email, 'Email Address', 'The email address to best reach you.', true)}
         {quote && <div className={'form-group ' + comment.name + (comment.error && comment.touched ? ' has-error' : '')}>
           <div className={styles.inputGroup} data-label="Message" data-error={comment.error && comment.touched && comment.error}>
-            <textarea placeholder="i.e., Buongiorno!" id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
+            <textarea placeholder="Let us know how we can help you." id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
           </div>
         </div>}
         {quote && <div className={'form-group ' + newsletter.name}>
