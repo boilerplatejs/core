@@ -82,7 +82,7 @@ export default class extends Component {
         {renderInput(email, 'Email Address', 'The email address to best reach you.', true)}
         {quote && <div className={'form-group ' + comment.name + (comment.error && comment.touched ? ' has-error' : '')}>
           <div className={styles.inputGroup} data-label="Message" data-error={comment.error && comment.touched && comment.error}>
-            <textarea placeholder="Let us know how we can help you." id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
+            <textarea placeholder="Tell us what you're looking for." id={comment.name} className="form-control" {...domOnlyProps(comment)}></textarea>
           </div>
         </div>}
         {quote && <div className={'form-group ' + newsletter.name}>
