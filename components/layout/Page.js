@@ -11,7 +11,10 @@ import {Footer} from '@boilerplatejs/core/components/layout';
 //   return Array.prototype.concat.apply([], args).filter(item => !!item);
 // };
 
-@connect(state => ({ header: state['@boilerplatejs/core'].Transition.header || 0 }), {transition})
+@connect(state => ({
+  header: state['@boilerplatejs/core'].Transition.header || 0,
+  pageviews: state['@boilerplatejs/core'].Transition.pageviews || 0
+}), {transition})
 
 export default class extends Component {
 
@@ -25,6 +28,7 @@ export default class extends Component {
     params: PropTypes.object,
     config: PropTypes.object,
     headers: PropTypes.any,
+    pageviews: PropTypes.number,
     sections: PropTypes.array,
     options: PropTypes.object,
     children: PropTypes.any,
@@ -37,13 +41,18 @@ export default class extends Component {
   };
 
   componentDidMount() {
-    ReactGA.pageview(this.props.location.pathname);
+    const { transition, pageviews, location } = this.props;
+
+    if (pageviews) {
+      ReactGA.pageview(location.pathname);
+    }
 
     if (global.scrollTo) {
       global.scrollTo(0, 0);
     }
 
-    this.props.transition({ progress: 1 });
+    transition('pageviews', pageviews + 1);
+    transition({ progress: 1 });
   }
 
   afterSlide = header => this.props.transition({ header });
