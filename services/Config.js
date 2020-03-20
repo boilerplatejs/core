@@ -78,7 +78,9 @@ const getEnvironmentConfig = async (bundle, configuration, name = __CONFIG__ || 
     const models = getModels(bundle);
     const {Environment} = models;
 
-    return (cache.environment[bundle] = cache.environment[bundle] || await Environment.findOne({
+    cache.environment[bundle] = cache.environment[bundle] || {};
+
+    return (cache.environment[bundle][configuration] = cache.environment[bundle][configuration] || await Environment.findOne({
         where: { name },
         include: [{
             model: models[configuration],
