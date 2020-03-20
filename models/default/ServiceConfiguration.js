@@ -15,11 +15,7 @@ export default class extends Model {
      * id = { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true };
      * name = DataTypes.STRING;
      */
-    googleAnalyticsId = DataTypes.STRING;
-    googleAnalyticsDebug = DataTypes.BOOLEAN;
-    auth0Domain = DataTypes.STRING;
-    auth0ClientId = DataTypes.STRING;
-    recaptchaSiteKey = DataTypes.STRING;
+    recaptchaSecretKey = DataTypes.STRING;
 
     /**
      * Descriptors
