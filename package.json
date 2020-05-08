@@ -1,6 +1,6 @@
 {
   "name": "@boilerplatejs/core",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "lint": "boilerplate lint --bundle $(pwd)",
     "mount": "boilerplate mount --bundle $(pwd)",

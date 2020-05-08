@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import {VelocityTransitionGroup} from 'velocity-react';
+// import {VelocityTransitionGroup} from 'velocity-react';
 import NukaCarousel from 'nuka-carousel';
-import {Page, Header, Footer} from '@boilerplatejs/core/components/layout';
+import {Page, Footer} from '@boilerplatejs/core/components/layout';
 import {transition} from '@boilerplatejs/core/actions/Transition';
 
 @connect(state => ({
@@ -52,9 +52,10 @@ export default class extends Page {
           </section>
         ) : <span/>}
         <section className="section container">
-          <VelocityTransitionGroup enter={{ easing: [ 0.17, 0.67, 0.83, 0.67 ], animation: 'transition.fadeIn', duration: 750, begin: this.begin, complete: this.complete }}>
+          {/* <VelocityTransitionGroup enter={{ easing: [ 0.17, 0.67, 0.83, 0.67 ], animation: 'transition.fadeIn', duration: 750, begin: this.begin, complete: this.complete }}>
             {sections[section]}
-          </VelocityTransitionGroup>
+          </VelocityTransitionGroup> */}
+          {sections[section]}
         </section>
         <Footer/>
       </Page>
